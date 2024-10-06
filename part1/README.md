@@ -4,7 +4,7 @@ Part 1, apps: Anecdotes.
 
 Tools: Selenium.
 
-Frameworks: Robot Framework.
+Frameworks: Robot Framework, pytest.
 
 Languages: Python.
 
