@@ -1,5 +1,12 @@
-# Test results
+# Testing
 
+### Installation
+```
+pip install robotframework --user
+pip install --upgrade robotframework-seleniumlibrary
+```
+
+### Results
 ```
 > robot -d .\results\ tests\anecdotes.robot
 ==============================================================================
