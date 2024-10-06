@@ -76,7 +76,6 @@ Verify Number Of Votes
                 ${current_anecdote} =    Home.Get Current Anecdote
                 Dictionary Should Contain Key    ${DICT}    ${current_anecdote}
                 ${vote_from_dict} =    Get From Dictionary 	${DICT} 	${current_anecdote}
-                ${current_votes} =  Home.Get Current Vote Count
                 Should Be Equal    ${vote_from_dict}    ${current_votes}
                 BREAK
             ELSE
