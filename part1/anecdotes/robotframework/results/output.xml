@@ -1,0 +1,2305 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<robot generator="Robot 7.1 (Python 3.12.3 on win32)" generated="2024-10-06T10:09:43.011841" rpa="false" schemaversion="5">
+<suite id="s1" name="Anecdotes" source="C:\Users\Artur\OneDrive\Documents\fullstackopen_aqa\part1\anecdotes\robotframework\tests\anecdotes.robot">
+<test id="s1-t1" name="Verify an anecdote is present" line="17">
+<kw name="Begin Test" owner="common" type="SETUP">
+<kw name="Open Browser" owner="SeleniumLibrary">
+<msg time="2024-10-06T10:09:43.160210" level="INFO">Opening browser 'firefox' to base url 'http://localhost:5173/'.</msg>
+<arg>${URL}</arg>
+<arg>${BROWSER}</arg>
+<doc>Opens a new browser instance to the optional ``url``.</doc>
+<status status="PASS" start="2024-10-06T10:09:43.160210" elapsed="7.230554"/>
+</kw>
+<status status="PASS" start="2024-10-06T10:09:43.160210" elapsed="7.230554"/>
+</kw>
+<kw name="Verify that the page is loaded" owner="AnecdotesApp">
+<kw name="App Header Is Correct" owner="Home">
+<kw name="Wait Until Element Contains" owner="SeleniumLibrary">
+<arg>${HOME_APP_HEADER}</arg>
+<arg>Anecdote of the day</arg>
+<doc>Waits until the element ``locator`` contains ``text``.</doc>
+<status status="PASS" start="2024-10-06T10:09:50.390764" elapsed="0.015595"/>
+</kw>
+<status status="PASS" start="2024-10-06T10:09:50.390764" elapsed="0.015595"/>
+</kw>
+<status status="PASS" start="2024-10-06T10:09:50.390764" elapsed="0.015595"/>
+</kw>
+<kw name="Verify that the displayed anecdote is correct" owner="AnecdotesApp">
+<kw name="Get Current Anecdote" owner="Home">
+<kw name="Get Whole Text" owner="Home">
+<kw name="Get Text" owner="SeleniumLibrary">
+<msg time="2024-10-06T10:09:50.428812" level="INFO">${whole_text} = Anecdote of the day
+If it hurts, do it more often.
+has 0 votes
+votenext anecdote
+Anecdote with most votes
+If it hurts, do it more often.
+has 0 votes</msg>
+<var>${whole_text}</var>
+<arg>${ALL_TEXT}</arg>
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<status status="PASS" start="2024-10-06T10:09:50.406359" elapsed="0.022453"/>
+</kw>
+<return>
+<value>${whole_text}</value>
+<status status="PASS" start="2024-10-06T10:09:50.428812" elapsed="0.000000"/>
+</return>
+<msg time="2024-10-06T10:09:50.428812" level="INFO">${whole_text} = Anecdote of the day
+If it hurts, do it more often.
+has 0 votes
+votenext anecdote
+Anecdote with most votes
+If it hurts, do it more often.
+has 0 votes</msg>
+<var>${whole_text}</var>
+<status status="PASS" start="2024-10-06T10:09:50.406359" elapsed="0.022453"/>
+</kw>
+<kw name="Get Line" owner="String">
+<msg time="2024-10-06T10:09:50.428812" level="INFO">${2nd_line} = If it hurts, do it more often.</msg>
+<var>${2nd_line}</var>
+<arg>${whole_text}</arg>
+<arg>1</arg>
+<doc>Returns the specified line from the given ``string``.</doc>
+<status status="PASS" start="2024-10-06T10:09:50.428812" elapsed="0.000000"/>
+</kw>
+<return>
+<value>${2nd_line}</value>
+<status status="PASS" start="2024-10-06T10:09:50.428812" elapsed="0.000000"/>
+</return>
+<msg time="2024-10-06T10:09:50.428812" level="INFO">${anecdote} = If it hurts, do it more often.</msg>
+<var>${anecdote}</var>
+<status status="PASS" start="2024-10-06T10:09:50.406359" elapsed="0.022453"/>
+</kw>
+<kw name="List Should Contain Value" owner="Collections">
+<arg>${ANECDOTES}</arg>
+<arg>${anecdote}</arg>
+<doc>Fails if the ``value`` is not found from ``list``.</doc>
+<status status="PASS" start="2024-10-06T10:09:50.428812" elapsed="0.000000"/>
+</kw>
+<status status="PASS" start="2024-10-06T10:09:50.406359" elapsed="0.022453"/>
+</kw>
+<kw name="End Test" owner="common" type="TEARDOWN">
+<kw name="Close All Browsers" owner="SeleniumLibrary">
+<doc>Closes all open browsers and resets the browser cache.</doc>
+<status status="PASS" start="2024-10-06T10:09:50.433965" elapsed="6.660069"/>
+</kw>
+<status status="PASS" start="2024-10-06T10:09:50.433810" elapsed="6.660224"/>
+</kw>
+<status status="PASS" start="2024-10-06T10:09:43.160210" elapsed="13.933824"/>
+</test>
+<test id="s1-t2" name="Verify that the &quot;Next Anecdote&quot; button works" line="22">
+<kw name="Begin Test" owner="common" type="SETUP">
+<kw name="Open Browser" owner="SeleniumLibrary">
+<msg time="2024-10-06T10:09:57.094034" level="INFO">Opening browser 'firefox' to base url 'http://localhost:5173/'.</msg>
+<arg>${URL}</arg>
+<arg>${BROWSER}</arg>
+<doc>Opens a new browser instance to the optional ``url``.</doc>
+<status status="PASS" start="2024-10-06T10:09:57.094034" elapsed="6.969212"/>
+</kw>
+<status status="PASS" start="2024-10-06T10:09:57.094034" elapsed="6.969212"/>
+</kw>
+<kw name="Verify that the page is loaded" owner="AnecdotesApp">
+<kw name="App Header Is Correct" owner="Home">
+<kw name="Wait Until Element Contains" owner="SeleniumLibrary">
+<arg>${HOME_APP_HEADER}</arg>
+<arg>Anecdote of the day</arg>
+<doc>Waits until the element ``locator`` contains ``text``.</doc>
+<status status="PASS" start="2024-10-06T10:10:04.063246" elapsed="0.031289"/>
+</kw>
+<status status="PASS" start="2024-10-06T10:10:04.063246" elapsed="0.031289"/>
+</kw>
+<status status="PASS" start="2024-10-06T10:10:04.063246" elapsed="0.031289"/>
+</kw>
+<kw name="&quot;Next Anecdote&quot; functionality returns new anecdote" owner="AnecdotesApp">
+<kw name="Get Current Anecdote" owner="Home">
+<kw name="Get Whole Text" owner="Home">
+<kw name="Get Text" owner="SeleniumLibrary">
+<msg time="2024-10-06T10:10:04.110162" level="INFO">${whole_text} = Anecdote of the day
+If it hurts, do it more often.
+has 0 votes
+votenext anecdote
+Anecdote with most votes
+If it hurts, do it more often.
+has 0 votes</msg>
+<var>${whole_text}</var>
+<arg>${ALL_TEXT}</arg>
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<status status="PASS" start="2024-10-06T10:10:04.094535" elapsed="0.015627"/>
+</kw>
+<return>
+<value>${whole_text}</value>
+<status status="PASS" start="2024-10-06T10:10:04.110162" elapsed="0.000000"/>
+</return>
+<msg time="2024-10-06T10:10:04.110162" level="INFO">${whole_text} = Anecdote of the day
+If it hurts, do it more often.
+has 0 votes
+votenext anecdote
+Anecdote with most votes
+If it hurts, do it more often.
+has 0 votes</msg>
+<var>${whole_text}</var>
+<status status="PASS" start="2024-10-06T10:10:04.094535" elapsed="0.015627"/>
+</kw>
+<kw name="Get Line" owner="String">
+<msg time="2024-10-06T10:10:04.110162" level="INFO">${2nd_line} = If it hurts, do it more often.</msg>
+<var>${2nd_line}</var>
+<arg>${whole_text}</arg>
+<arg>1</arg>
+<doc>Returns the specified line from the given ``string``.</doc>
+<status status="PASS" start="2024-10-06T10:10:04.110162" elapsed="0.000000"/>
+</kw>
+<return>
+<value>${2nd_line}</value>
+<status status="PASS" start="2024-10-06T10:10:04.110162" elapsed="0.000000"/>
+</return>
+<msg time="2024-10-06T10:10:04.110162" level="INFO">${old_anecdote} = If it hurts, do it more often.</msg>
+<var>${old_anecdote}</var>
+<status status="PASS" start="2024-10-06T10:10:04.094535" elapsed="0.015627"/>
+</kw>
+<for flavor="IN RANGE">
+<iter>
+<kw name="Get New Anecdote" owner="Home">
+<kw name="Click Button" owner="SeleniumLibrary">
+<msg time="2024-10-06T10:10:04.110162" level="INFO">Clicking button '//div[@id="root"]/div/div[2]/button[2]'.</msg>
+<arg>//div[@id="root"]/div/div[2]/button[2]</arg>
+<doc>Clicks the button identified by ``locator``.</doc>
+<status status="PASS" start="2024-10-06T10:10:04.110162" elapsed="0.237305"/>
+</kw>
+<status status="PASS" start="2024-10-06T10:10:04.110162" elapsed="0.237840"/>
+</kw>
+<kw name="Get Current Anecdote" owner="Home">
+<kw name="Get Whole Text" owner="Home">
+<kw name="Get Text" owner="SeleniumLibrary">
+<msg time="2024-10-06T10:10:04.357995" level="INFO">${whole_text} = Anecdote of the day
+If it hurts, do it more often.
+has 0 votes
+votenext anecdote
+Anecdote with most votes
+If it hurts, do it more often.
+has 0 votes</msg>
+<var>${whole_text}</var>
+<arg>${ALL_TEXT}</arg>
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<status status="PASS" start="2024-10-06T10:10:04.348738" elapsed="0.009767"/>
+</kw>
+<return>
+<value>${whole_text}</value>
+<status status="PASS" start="2024-10-06T10:10:04.358505" elapsed="0.000000"/>
+</return>
+<msg time="2024-10-06T10:10:04.358505" level="INFO">${whole_text} = Anecdote of the day
+If it hurts, do it more often.
+has 0 votes
+votenext anecdote
+Anecdote with most votes
+If it hurts, do it more often.
+has 0 votes</msg>
+<var>${whole_text}</var>
+<status status="PASS" start="2024-10-06T10:10:04.348002" elapsed="0.010503"/>
+</kw>
+<kw name="Get Line" owner="String">
+<msg time="2024-10-06T10:10:04.358505" level="INFO">${2nd_line} = If it hurts, do it more often.</msg>
+<var>${2nd_line}</var>
+<arg>${whole_text}</arg>
+<arg>1</arg>
+<doc>Returns the specified line from the given ``string``.</doc>
+<status status="PASS" start="2024-10-06T10:10:04.358505" elapsed="0.000000"/>
+</kw>
+<return>
+<value>${2nd_line}</value>
+<status status="PASS" start="2024-10-06T10:10:04.358505" elapsed="0.000000"/>
+</return>
+<msg time="2024-10-06T10:10:04.358505" level="INFO">${new_anecdote} = If it hurts, do it more often.</msg>
+<var>${new_anecdote}</var>
+<status status="PASS" start="2024-10-06T10:10:04.348002" elapsed="0.010503"/>
+</kw>
+<if>
+<branch type="IF" condition="'$old_anecdote' != '$new_anecdote'">
+<return>
+<value>${new_anecdote}</value>
+<status status="PASS" start="2024-10-06T10:10:04.358505" elapsed="0.000000"/>
+</return>
+<status status="PASS" start="2024-10-06T10:10:04.358505" elapsed="0.000000"/>
+</branch>
+<status status="PASS" start="2024-10-06T10:10:04.358505" elapsed="0.000000"/>
+</if>
+<var name="${index}">0</var>
+<status status="PASS" start="2024-10-06T10:10:04.110162" elapsed="0.248343"/>
+</iter>
+<var>${index}</var>
+<value>${TRIES}</value>
+<status status="PASS" start="2024-10-06T10:10:04.110162" elapsed="0.248343"/>
+</for>
+<kw name="Fail" owner="BuiltIn">
+<arg>The anecdote was not changed</arg>
+<doc>Fails the test with the given message and optionally alters its tags.</doc>
+<status status="NOT RUN" start="2024-10-06T10:10:04.358505" elapsed="0.000000"/>
+</kw>
+<status status="PASS" start="2024-10-06T10:10:04.094535" elapsed="0.263970"/>
+</kw>
+<kw name="End Test" owner="common" type="TEARDOWN">
+<kw name="Close All Browsers" owner="SeleniumLibrary">
+<doc>Closes all open browsers and resets the browser cache.</doc>
+<status status="PASS" start="2024-10-06T10:10:04.358505" elapsed="6.646420"/>
+</kw>
+<status status="PASS" start="2024-10-06T10:10:04.358505" elapsed="6.646420"/>
+</kw>
+<status status="PASS" start="2024-10-06T10:09:57.094034" elapsed="13.910891"/>
+</test>
+<test id="s1-t3" name="Verify that the &quot;Vote&quot; functionality works" line="27">
+<kw name="Begin Test" owner="common" type="SETUP">
+<kw name="Open Browser" owner="SeleniumLibrary">
+<msg time="2024-10-06T10:10:11.004925" level="INFO">Opening browser 'firefox' to base url 'http://localhost:5173/'.</msg>
+<arg>${URL}</arg>
+<arg>${BROWSER}</arg>
+<doc>Opens a new browser instance to the optional ``url``.</doc>
+<status status="PASS" start="2024-10-06T10:10:11.004925" elapsed="6.886281"/>
+</kw>
+<status status="PASS" start="2024-10-06T10:10:11.004925" elapsed="6.886281"/>
+</kw>
+<kw name="Verify that the page is loaded" owner="AnecdotesApp">
+<kw name="App Header Is Correct" owner="Home">
+<kw name="Wait Until Element Contains" owner="SeleniumLibrary">
+<arg>${HOME_APP_HEADER}</arg>
+<arg>Anecdote of the day</arg>
+<doc>Waits until the element ``locator`` contains ``text``.</doc>
+<status status="PASS" start="2024-10-06T10:10:17.891206" elapsed="0.022139"/>
+</kw>
+<status status="PASS" start="2024-10-06T10:10:17.891206" elapsed="0.022139"/>
+</kw>
+<status status="PASS" start="2024-10-06T10:10:17.891206" elapsed="0.022139"/>
+</kw>
+<kw name="Vote for anecdote" owner="AnecdotesApp">
+<kw name="Repeat Keyword" owner="BuiltIn">
+<msg time="2024-10-06T10:10:17.913345" level="INFO">Repeating keyword, round 1/5.</msg>
+<kw name="Vote" owner="Home">
+<kw name="Click Button" owner="SeleniumLibrary">
+<msg time="2024-10-06T10:10:17.913345" level="INFO">Clicking button '//div[@id="root"]/div/div[2]/button[1]'.</msg>
+<arg>//div[@id="root"]/div/div[2]/button[1]</arg>
+<doc>Clicks the button identified by ``locator``.</doc>
+<status status="PASS" start="2024-10-06T10:10:17.913345" elapsed="0.251028"/>
+</kw>
+<status status="PASS" start="2024-10-06T10:10:17.913345" elapsed="0.251028"/>
+</kw>
+<msg time="2024-10-06T10:10:18.164373" level="INFO">Repeating keyword, round 2/5.</msg>
+<kw name="Vote" owner="Home">
+<kw name="Click Button" owner="SeleniumLibrary">
+<msg time="2024-10-06T10:10:18.164373" level="INFO">Clicking button '//div[@id="root"]/div/div[2]/button[1]'.</msg>
+<arg>//div[@id="root"]/div/div[2]/button[1]</arg>
+<doc>Clicks the button identified by ``locator``.</doc>
+<status status="PASS" start="2024-10-06T10:10:18.164373" elapsed="0.220399"/>
+</kw>
+<status status="PASS" start="2024-10-06T10:10:18.164373" elapsed="0.220399"/>
+</kw>
+<msg time="2024-10-06T10:10:18.384772" level="INFO">Repeating keyword, round 3/5.</msg>
+<kw name="Vote" owner="Home">
+<kw name="Click Button" owner="SeleniumLibrary">
+<msg time="2024-10-06T10:10:18.384772" level="INFO">Clicking button '//div[@id="root"]/div/div[2]/button[1]'.</msg>
+<arg>//div[@id="root"]/div/div[2]/button[1]</arg>
+<doc>Clicks the button identified by ``locator``.</doc>
+<status status="PASS" start="2024-10-06T10:10:18.384772" elapsed="0.221361"/>
+</kw>
+<status status="PASS" start="2024-10-06T10:10:18.384772" elapsed="0.221361"/>
+</kw>
+<msg time="2024-10-06T10:10:18.606133" level="INFO">Repeating keyword, round 4/5.</msg>
+<kw name="Vote" owner="Home">
+<kw name="Click Button" owner="SeleniumLibrary">
+<msg time="2024-10-06T10:10:18.606133" level="INFO">Clicking button '//div[@id="root"]/div/div[2]/button[1]'.</msg>
+<arg>//div[@id="root"]/div/div[2]/button[1]</arg>
+<doc>Clicks the button identified by ``locator``.</doc>
+<status status="PASS" start="2024-10-06T10:10:18.606133" elapsed="0.219893"/>
+</kw>
+<status status="PASS" start="2024-10-06T10:10:18.606133" elapsed="0.219893"/>
+</kw>
+<msg time="2024-10-06T10:10:18.826026" level="INFO">Repeating keyword, round 5/5.</msg>
+<kw name="Vote" owner="Home">
+<kw name="Click Button" owner="SeleniumLibrary">
+<msg time="2024-10-06T10:10:18.826026" level="INFO">Clicking button '//div[@id="root"]/div/div[2]/button[1]'.</msg>
+<arg>//div[@id="root"]/div/div[2]/button[1]</arg>
+<doc>Clicks the button identified by ``locator``.</doc>
+<status status="PASS" start="2024-10-06T10:10:18.826026" elapsed="0.220730"/>
+</kw>
+<status status="PASS" start="2024-10-06T10:10:18.826026" elapsed="0.220730"/>
+</kw>
+<arg>${votes}</arg>
+<arg>Home.Vote</arg>
+<doc>Executes the specified keyword multiple times.</doc>
+<status status="PASS" start="2024-10-06T10:10:17.913345" elapsed="1.133411"/>
+</kw>
+<kw name="Get Current Anecdote" owner="Home">
+<kw name="Get Whole Text" owner="Home">
+<kw name="Get Text" owner="SeleniumLibrary">
+<msg time="2024-10-06T10:10:19.046756" level="INFO">${whole_text} = Anecdote of the day
+If it hurts, do it more often.
+has 5 votes
+votenext anecdote
+Anecdote with most votes
+If it hurts, do it more often.
+has 5 votes</msg>
+<var>${whole_text}</var>
+<arg>${ALL_TEXT}</arg>
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<status status="PASS" start="2024-10-06T10:10:19.046756" elapsed="0.000000"/>
+</kw>
+<return>
+<value>${whole_text}</value>
+<status status="PASS" start="2024-10-06T10:10:19.046756" elapsed="0.000000"/>
+</return>
+<msg time="2024-10-06T10:10:19.046756" level="INFO">${whole_text} = Anecdote of the day
+If it hurts, do it more often.
+has 5 votes
+votenext anecdote
+Anecdote with most votes
+If it hurts, do it more often.
+has 5 votes</msg>
+<var>${whole_text}</var>
+<status status="PASS" start="2024-10-06T10:10:19.046756" elapsed="0.000000"/>
+</kw>
+<kw name="Get Line" owner="String">
+<msg time="2024-10-06T10:10:19.046756" level="INFO">${2nd_line} = If it hurts, do it more often.</msg>
+<var>${2nd_line}</var>
+<arg>${whole_text}</arg>
+<arg>1</arg>
+<doc>Returns the specified line from the given ``string``.</doc>
+<status status="PASS" start="2024-10-06T10:10:19.046756" elapsed="0.000000"/>
+</kw>
+<return>
+<value>${2nd_line}</value>
+<status status="PASS" start="2024-10-06T10:10:19.046756" elapsed="0.000000"/>
+</return>
+<msg time="2024-10-06T10:10:19.046756" level="INFO">${current_anecdote} = If it hurts, do it more often.</msg>
+<var>${current_anecdote}</var>
+<status status="PASS" start="2024-10-06T10:10:19.046756" elapsed="0.000000"/>
+</kw>
+<kw name="Get Current Vote Count" owner="Home">
+<kw name="Get Whole Text" owner="Home">
+<kw name="Get Text" owner="SeleniumLibrary">
+<msg time="2024-10-06T10:10:19.062280" level="INFO">${whole_text} = Anecdote of the day
+If it hurts, do it more often.
+has 5 votes
+votenext anecdote
+Anecdote with most votes
+If it hurts, do it more often.
+has 5 votes</msg>
+<var>${whole_text}</var>
+<arg>${ALL_TEXT}</arg>
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<status status="PASS" start="2024-10-06T10:10:19.046756" elapsed="0.015524"/>
+</kw>
+<return>
+<value>${whole_text}</value>
+<status status="PASS" start="2024-10-06T10:10:19.062280" elapsed="0.000000"/>
+</return>
+<msg time="2024-10-06T10:10:19.062280" level="INFO">${whole_text} = Anecdote of the day
+If it hurts, do it more often.
+has 5 votes
+votenext anecdote
+Anecdote with most votes
+If it hurts, do it more often.
+has 5 votes</msg>
+<var>${whole_text}</var>
+<status status="PASS" start="2024-10-06T10:10:19.046756" elapsed="0.015524"/>
+</kw>
+<kw name="Get Line" owner="String">
+<msg time="2024-10-06T10:10:19.062280" level="INFO">${3rd_line} = has 5 votes</msg>
+<var>${3rd_line}</var>
+<arg>${whole_text}</arg>
+<arg>2</arg>
+<doc>Returns the specified line from the given ``string``.</doc>
+<status status="PASS" start="2024-10-06T10:10:19.062280" elapsed="0.000000"/>
+</kw>
+<kw name="Remove String" owner="String">
+<msg time="2024-10-06T10:10:19.062280" level="INFO">${current_votes_count} =  5 votes</msg>
+<var>${current_votes_count}</var>
+<arg>${3rd_line}</arg>
+<arg>has</arg>
+<doc>Removes all ``removables`` from the given ``string``.</doc>
+<status status="PASS" start="2024-10-06T10:10:19.062280" elapsed="0.000000"/>
+</kw>
+<kw name="Remove String" owner="String">
+<msg time="2024-10-06T10:10:19.062280" level="INFO">${current_votes_count} =  5 </msg>
+<var>${current_votes_count}</var>
+<arg>${current_votes_count}</arg>
+<arg>votes</arg>
+<doc>Removes all ``removables`` from the given ``string``.</doc>
+<status status="PASS" start="2024-10-06T10:10:19.062280" elapsed="0.000000"/>
+</kw>
+<kw name="Convert To Integer" owner="BuiltIn">
+<msg time="2024-10-06T10:10:19.062280" level="INFO">${current_votes_count} = 5</msg>
+<var>${current_votes_count}</var>
+<arg>${current_votes_count}</arg>
+<doc>Converts the given item to an integer number.</doc>
+<status status="PASS" start="2024-10-06T10:10:19.062280" elapsed="0.000000"/>
+</kw>
+<return>
+<value>${current_votes_count}</value>
+<status status="PASS" start="2024-10-06T10:10:19.062280" elapsed="0.000000"/>
+</return>
+<msg time="2024-10-06T10:10:19.062280" level="INFO">${current_votes} = 5</msg>
+<var>${current_votes}</var>
+<status status="PASS" start="2024-10-06T10:10:19.046756" elapsed="0.015524"/>
+</kw>
+<kw name="Set To Dictionary" owner="Collections">
+<arg>${DICT}</arg>
+<arg>${current_anecdote}=${current_votes}</arg>
+<doc>Adds the given ``key_value_pairs`` and/or ``items`` to the ``dictionary``.</doc>
+<status status="PASS" start="2024-10-06T10:10:19.062280" elapsed="0.000000"/>
+</kw>
+<arg>${VOTES}</arg>
+<status status="PASS" start="2024-10-06T10:10:17.913345" elapsed="1.148935"/>
+</kw>
+<kw name="Current Vote Count Is Correct" owner="AnecdotesApp">
+<kw name="Get Current Vote Count" owner="Home">
+<kw name="Get Whole Text" owner="Home">
+<kw name="Get Text" owner="SeleniumLibrary">
+<msg time="2024-10-06T10:10:19.062280" level="INFO">${whole_text} = Anecdote of the day
+If it hurts, do it more often.
+has 5 votes
+votenext anecdote
+Anecdote with most votes
+If it hurts, do it more often.
+has 5 votes</msg>
+<var>${whole_text}</var>
+<arg>${ALL_TEXT}</arg>
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<status status="PASS" start="2024-10-06T10:10:19.062280" elapsed="0.000000"/>
+</kw>
+<return>
+<value>${whole_text}</value>
+<status status="PASS" start="2024-10-06T10:10:19.062280" elapsed="0.000000"/>
+</return>
+<msg time="2024-10-06T10:10:19.078014" level="INFO">${whole_text} = Anecdote of the day
+If it hurts, do it more often.
+has 5 votes
+votenext anecdote
+Anecdote with most votes
+If it hurts, do it more often.
+has 5 votes</msg>
+<var>${whole_text}</var>
+<status status="PASS" start="2024-10-06T10:10:19.062280" elapsed="0.015734"/>
+</kw>
+<kw name="Get Line" owner="String">
+<msg time="2024-10-06T10:10:19.078014" level="INFO">${3rd_line} = has 5 votes</msg>
+<var>${3rd_line}</var>
+<arg>${whole_text}</arg>
+<arg>2</arg>
+<doc>Returns the specified line from the given ``string``.</doc>
+<status status="PASS" start="2024-10-06T10:10:19.078014" elapsed="0.000000"/>
+</kw>
+<kw name="Remove String" owner="String">
+<msg time="2024-10-06T10:10:19.078014" level="INFO">${current_votes_count} =  5 votes</msg>
+<var>${current_votes_count}</var>
+<arg>${3rd_line}</arg>
+<arg>has</arg>
+<doc>Removes all ``removables`` from the given ``string``.</doc>
+<status status="PASS" start="2024-10-06T10:10:19.078014" elapsed="0.000000"/>
+</kw>
+<kw name="Remove String" owner="String">
+<msg time="2024-10-06T10:10:19.078014" level="INFO">${current_votes_count} =  5 </msg>
+<var>${current_votes_count}</var>
+<arg>${current_votes_count}</arg>
+<arg>votes</arg>
+<doc>Removes all ``removables`` from the given ``string``.</doc>
+<status status="PASS" start="2024-10-06T10:10:19.078014" elapsed="0.000000"/>
+</kw>
+<kw name="Convert To Integer" owner="BuiltIn">
+<msg time="2024-10-06T10:10:19.078014" level="INFO">${current_votes_count} = 5</msg>
+<var>${current_votes_count}</var>
+<arg>${current_votes_count}</arg>
+<doc>Converts the given item to an integer number.</doc>
+<status status="PASS" start="2024-10-06T10:10:19.078014" elapsed="0.000000"/>
+</kw>
+<return>
+<value>${current_votes_count}</value>
+<status status="PASS" start="2024-10-06T10:10:19.078014" elapsed="0.000000"/>
+</return>
+<msg time="2024-10-06T10:10:19.078014" level="INFO">${current_votes} = 5</msg>
+<var>${current_votes}</var>
+<status status="PASS" start="2024-10-06T10:10:19.062280" elapsed="0.015734"/>
+</kw>
+<kw name="Convert To Integer" owner="BuiltIn">
+<msg time="2024-10-06T10:10:19.078014" level="INFO">${votes} = 5</msg>
+<var>${votes}</var>
+<arg>${votes}</arg>
+<doc>Converts the given item to an integer number.</doc>
+<status status="PASS" start="2024-10-06T10:10:19.078014" elapsed="0.000000"/>
+</kw>
+<kw name="Should Be Equal" owner="BuiltIn">
+<arg>${current_votes}</arg>
+<arg>${votes}</arg>
+<doc>Fails if the given objects are unequal.</doc>
+<status status="PASS" start="2024-10-06T10:10:19.078014" elapsed="0.000000"/>
+</kw>
+<arg>${VOTES}</arg>
+<status status="PASS" start="2024-10-06T10:10:19.062280" elapsed="0.015734"/>
+</kw>
+<kw name="Most Voted Anecdote Is Correct" owner="AnecdotesApp">
+<kw name="Set Variable" owner="BuiltIn">
+<msg time="2024-10-06T10:10:19.078014" level="INFO">${max_key} = ABC</msg>
+<var>${max_key}</var>
+<arg>ABC</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="PASS" start="2024-10-06T10:10:19.078014" elapsed="0.000000"/>
+</kw>
+<kw name="Set Variable" owner="BuiltIn">
+<msg time="2024-10-06T10:10:19.078014" level="INFO">${max_value} = -1</msg>
+<var>${max_value}</var>
+<arg>-1</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="PASS" start="2024-10-06T10:10:19.078014" elapsed="0.000000"/>
+</kw>
+<for flavor="IN">
+<iter>
+<if>
+<branch type="IF" condition="${value} &gt; ${max_value}">
+<kw name="Set Variable" owner="BuiltIn">
+<var>${max_key}</var>
+<arg>${key}</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="NOT RUN" start="2024-10-06T10:10:19.078014" elapsed="0.000000"/>
+</kw>
+<kw name="Set Variable" owner="BuiltIn">
+<var>${max_value}</var>
+<arg>${value}</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="NOT RUN" start="2024-10-06T10:10:19.078014" elapsed="0.000000"/>
+</kw>
+<status status="NOT RUN" start="2024-10-06T10:10:19.078014" elapsed="0.000000"/>
+</branch>
+<status status="PASS" start="2024-10-06T10:10:19.078014" elapsed="0.000000"/>
+</if>
+<var name="${key}"/>
+<var name="${value}">-1</var>
+<status status="PASS" start="2024-10-06T10:10:19.078014" elapsed="0.000000"/>
+</iter>
+<iter>
+<if>
+<branch type="IF" condition="${value} &gt; ${max_value}">
+<kw name="Set Variable" owner="BuiltIn">
+<msg time="2024-10-06T10:10:19.078014" level="INFO">${max_key} = If it hurts, do it more often.</msg>
+<var>${max_key}</var>
+<arg>${key}</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="PASS" start="2024-10-06T10:10:19.078014" elapsed="0.000000"/>
+</kw>
+<kw name="Set Variable" owner="BuiltIn">
+<msg time="2024-10-06T10:10:19.078014" level="INFO">${max_value} = 5</msg>
+<var>${max_value}</var>
+<arg>${value}</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="PASS" start="2024-10-06T10:10:19.078014" elapsed="0.000000"/>
+</kw>
+<status status="PASS" start="2024-10-06T10:10:19.078014" elapsed="0.000000"/>
+</branch>
+<status status="PASS" start="2024-10-06T10:10:19.078014" elapsed="0.000000"/>
+</if>
+<var name="${key}">If it hurts, do it more often.</var>
+<var name="${value}">5</var>
+<status status="PASS" start="2024-10-06T10:10:19.078014" elapsed="0.000000"/>
+</iter>
+<var>${key}</var>
+<var>${value}</var>
+<value>&amp;{DICT}</value>
+<status status="PASS" start="2024-10-06T10:10:19.078014" elapsed="0.000000"/>
+</for>
+<kw name="Get Most Voted Count" owner="Home">
+<kw name="Get Most Voted Section Text" owner="Home">
+<kw name="Get Text" owner="SeleniumLibrary">
+<msg time="2024-10-06T10:10:19.078014" level="INFO">${text} = has 5 votes</msg>
+<var>${text}</var>
+<arg>${MOST_VOTED_COUNT_TEXT}</arg>
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<status status="PASS" start="2024-10-06T10:10:19.078014" elapsed="0.000000"/>
+</kw>
+<return>
+<value>${text}</value>
+<status status="PASS" start="2024-10-06T10:10:19.078014" elapsed="0.000000"/>
+</return>
+<msg time="2024-10-06T10:10:19.078014" level="INFO">${most_votes_count} = has 5 votes</msg>
+<var>${most_votes_count}</var>
+<status status="PASS" start="2024-10-06T10:10:19.078014" elapsed="0.000000"/>
+</kw>
+<kw name="Remove String" owner="String">
+<msg time="2024-10-06T10:10:19.078014" level="INFO">${most_votes_count} =  5 </msg>
+<var>${most_votes_count}</var>
+<arg>${most_votes_count}</arg>
+<arg>has</arg>
+<arg>votes</arg>
+<doc>Removes all ``removables`` from the given ``string``.</doc>
+<status status="PASS" start="2024-10-06T10:10:19.078014" elapsed="0.000000"/>
+</kw>
+<kw name="Convert To Integer" owner="BuiltIn">
+<msg time="2024-10-06T10:10:19.078014" level="INFO">${most_votes_count} = 5</msg>
+<var>${most_votes_count}</var>
+<arg>${most_votes_count}</arg>
+<doc>Converts the given item to an integer number.</doc>
+<status status="PASS" start="2024-10-06T10:10:19.078014" elapsed="0.000000"/>
+</kw>
+<return>
+<value>${most_votes_count}</value>
+<status status="PASS" start="2024-10-06T10:10:19.078014" elapsed="0.000000"/>
+</return>
+<msg time="2024-10-06T10:10:19.078014" level="INFO">${most_votes} = 5</msg>
+<var>${most_votes}</var>
+<status status="PASS" start="2024-10-06T10:10:19.078014" elapsed="0.000000"/>
+</kw>
+<kw name="Should Be Equal" owner="BuiltIn">
+<arg>${most_votes}</arg>
+<arg>${max_value}</arg>
+<doc>Fails if the given objects are unequal.</doc>
+<status status="PASS" start="2024-10-06T10:10:19.078014" elapsed="0.000000"/>
+</kw>
+<kw name="Get Most Voted Anecdote" owner="Home">
+<kw name="Get Most Voted Section Text" owner="Home">
+<kw name="Get Text" owner="SeleniumLibrary">
+<msg time="2024-10-06T10:10:19.094119" level="INFO">${text} = has 5 votes</msg>
+<var>${text}</var>
+<arg>${MOST_VOTED_COUNT_TEXT}</arg>
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<status status="PASS" start="2024-10-06T10:10:19.078014" elapsed="0.016105"/>
+</kw>
+<return>
+<value>${text}</value>
+<status status="PASS" start="2024-10-06T10:10:19.094119" elapsed="0.000000"/>
+</return>
+<msg time="2024-10-06T10:10:19.094119" level="INFO">${most_votes_count} = has 5 votes</msg>
+<var>${most_votes_count}</var>
+<status status="PASS" start="2024-10-06T10:10:19.078014" elapsed="0.016105"/>
+</kw>
+<kw name="Get Text" owner="SeleniumLibrary">
+<msg time="2024-10-06T10:10:19.109861" level="INFO">${anecdote} = Anecdote with most votes
+If it hurts, do it more often.
+has 5 votes</msg>
+<var>${anecdote}</var>
+<arg>${MOST_VOTED_ANECDOTE}</arg>
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<status status="PASS" start="2024-10-06T10:10:19.094119" elapsed="0.015742"/>
+</kw>
+<kw name="Remove String" owner="String">
+<msg time="2024-10-06T10:10:19.109861" level="INFO">${anecdote} = If it hurts, do it more often.</msg>
+<var>${anecdote}</var>
+<arg>${anecdote}</arg>
+<arg>Anecdote with most votes\n</arg>
+<arg>\n${most_votes_count}</arg>
+<doc>Removes all ``removables`` from the given ``string``.</doc>
+<status status="PASS" start="2024-10-06T10:10:19.109861" elapsed="0.000000"/>
+</kw>
+<return>
+<value>${anecdote}</value>
+<status status="PASS" start="2024-10-06T10:10:19.109861" elapsed="0.000000"/>
+</return>
+<msg time="2024-10-06T10:10:19.109861" level="INFO">${most_voted_anecdote} = If it hurts, do it more often.</msg>
+<var>${most_voted_anecdote}</var>
+<status status="PASS" start="2024-10-06T10:10:19.078014" elapsed="0.031847"/>
+</kw>
+<kw name="Should Be Equal" owner="BuiltIn">
+<arg>${most_voted_anecdote}</arg>
+<arg>${max_key}</arg>
+<doc>Fails if the given objects are unequal.</doc>
+<status status="PASS" start="2024-10-06T10:10:19.109861" elapsed="0.000000"/>
+</kw>
+<status status="PASS" start="2024-10-06T10:10:19.078014" elapsed="0.031847"/>
+</kw>
+<kw name="&quot;Next Anecdote&quot; functionality returns new anecdote" owner="AnecdotesApp">
+<kw name="Get Current Anecdote" owner="Home">
+<kw name="Get Whole Text" owner="Home">
+<kw name="Get Text" owner="SeleniumLibrary">
+<msg time="2024-10-06T10:10:19.109861" level="INFO">${whole_text} = Anecdote of the day
+If it hurts, do it more often.
+has 5 votes
+votenext anecdote
+Anecdote with most votes
+If it hurts, do it more often.
+has 5 votes</msg>
+<var>${whole_text}</var>
+<arg>${ALL_TEXT}</arg>
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<status status="PASS" start="2024-10-06T10:10:19.109861" elapsed="0.000000"/>
+</kw>
+<return>
+<value>${whole_text}</value>
+<status status="PASS" start="2024-10-06T10:10:19.109861" elapsed="0.000000"/>
+</return>
+<msg time="2024-10-06T10:10:19.109861" level="INFO">${whole_text} = Anecdote of the day
+If it hurts, do it more often.
+has 5 votes
+votenext anecdote
+Anecdote with most votes
+If it hurts, do it more often.
+has 5 votes</msg>
+<var>${whole_text}</var>
+<status status="PASS" start="2024-10-06T10:10:19.109861" elapsed="0.000000"/>
+</kw>
+<kw name="Get Line" owner="String">
+<msg time="2024-10-06T10:10:19.109861" level="INFO">${2nd_line} = If it hurts, do it more often.</msg>
+<var>${2nd_line}</var>
+<arg>${whole_text}</arg>
+<arg>1</arg>
+<doc>Returns the specified line from the given ``string``.</doc>
+<status status="PASS" start="2024-10-06T10:10:19.109861" elapsed="0.000000"/>
+</kw>
+<return>
+<value>${2nd_line}</value>
+<status status="PASS" start="2024-10-06T10:10:19.109861" elapsed="0.000000"/>
+</return>
+<msg time="2024-10-06T10:10:19.109861" level="INFO">${old_anecdote} = If it hurts, do it more often.</msg>
+<var>${old_anecdote}</var>
+<status status="PASS" start="2024-10-06T10:10:19.109861" elapsed="0.000000"/>
+</kw>
+<for flavor="IN RANGE">
+<iter>
+<kw name="Get New Anecdote" owner="Home">
+<kw name="Click Button" owner="SeleniumLibrary">
+<msg time="2024-10-06T10:10:19.109861" level="INFO">Clicking button '//div[@id="root"]/div/div[2]/button[2]'.</msg>
+<arg>//div[@id="root"]/div/div[2]/button[2]</arg>
+<doc>Clicks the button identified by ``locator``.</doc>
+<status status="PASS" start="2024-10-06T10:10:19.109861" elapsed="0.235778"/>
+</kw>
+<status status="PASS" start="2024-10-06T10:10:19.109861" elapsed="0.235778"/>
+</kw>
+<kw name="Get Current Anecdote" owner="Home">
+<kw name="Get Whole Text" owner="Home">
+<kw name="Get Text" owner="SeleniumLibrary">
+<msg time="2024-10-06T10:10:19.345639" level="INFO">${whole_text} = Anecdote of the day
+The first 90 percent of the code accounts for the first 90 percent of the development time...The remaining 10 percent of the code accounts for the other 90 percent of the developme...</msg>
+<var>${whole_text}</var>
+<arg>${ALL_TEXT}</arg>
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<status status="PASS" start="2024-10-06T10:10:19.345639" elapsed="0.000000"/>
+</kw>
+<return>
+<value>${whole_text}</value>
+<status status="PASS" start="2024-10-06T10:10:19.345639" elapsed="0.000000"/>
+</return>
+<msg time="2024-10-06T10:10:19.345639" level="INFO">${whole_text} = Anecdote of the day
+The first 90 percent of the code accounts for the first 90 percent of the development time...The remaining 10 percent of the code accounts for the other 90 percent of the developme...</msg>
+<var>${whole_text}</var>
+<status status="PASS" start="2024-10-06T10:10:19.345639" elapsed="0.000000"/>
+</kw>
+<kw name="Get Line" owner="String">
+<msg time="2024-10-06T10:10:19.345639" level="INFO">${2nd_line} = The first 90 percent of the code accounts for the first 90 percent of the development time...The remaining 10 percent of the code accounts for the other 90 percent of the development time.</msg>
+<var>${2nd_line}</var>
+<arg>${whole_text}</arg>
+<arg>1</arg>
+<doc>Returns the specified line from the given ``string``.</doc>
+<status status="PASS" start="2024-10-06T10:10:19.345639" elapsed="0.000000"/>
+</kw>
+<return>
+<value>${2nd_line}</value>
+<status status="PASS" start="2024-10-06T10:10:19.345639" elapsed="0.000000"/>
+</return>
+<msg time="2024-10-06T10:10:19.345639" level="INFO">${new_anecdote} = The first 90 percent of the code accounts for the first 90 percent of the development time...The remaining 10 percent of the code accounts for the other 90 percent of the development time.</msg>
+<var>${new_anecdote}</var>
+<status status="PASS" start="2024-10-06T10:10:19.345639" elapsed="0.000000"/>
+</kw>
+<if>
+<branch type="IF" condition="'$old_anecdote' != '$new_anecdote'">
+<return>
+<value>${new_anecdote}</value>
+<status status="PASS" start="2024-10-06T10:10:19.345639" elapsed="0.000000"/>
+</return>
+<status status="PASS" start="2024-10-06T10:10:19.345639" elapsed="0.000000"/>
+</branch>
+<status status="PASS" start="2024-10-06T10:10:19.345639" elapsed="0.000000"/>
+</if>
+<var name="${index}">0</var>
+<status status="PASS" start="2024-10-06T10:10:19.109861" elapsed="0.235778"/>
+</iter>
+<var>${index}</var>
+<value>${TRIES}</value>
+<status status="PASS" start="2024-10-06T10:10:19.109861" elapsed="0.235778"/>
+</for>
+<kw name="Fail" owner="BuiltIn">
+<arg>The anecdote was not changed</arg>
+<doc>Fails the test with the given message and optionally alters its tags.</doc>
+<status status="NOT RUN" start="2024-10-06T10:10:19.345639" elapsed="0.000000"/>
+</kw>
+<status status="PASS" start="2024-10-06T10:10:19.109861" elapsed="0.235778"/>
+</kw>
+<kw name="Vote for anecdote" owner="AnecdotesApp">
+<kw name="Repeat Keyword" owner="BuiltIn">
+<msg time="2024-10-06T10:10:19.345639" level="INFO">Repeating keyword, round 1/4.</msg>
+<kw name="Vote" owner="Home">
+<kw name="Click Button" owner="SeleniumLibrary">
+<msg time="2024-10-06T10:10:19.345639" level="INFO">Clicking button '//div[@id="root"]/div/div[2]/button[1]'.</msg>
+<arg>//div[@id="root"]/div/div[2]/button[1]</arg>
+<doc>Clicks the button identified by ``locator``.</doc>
+<status status="PASS" start="2024-10-06T10:10:19.345639" elapsed="0.251727"/>
+</kw>
+<status status="PASS" start="2024-10-06T10:10:19.345639" elapsed="0.251727"/>
+</kw>
+<msg time="2024-10-06T10:10:19.597366" level="INFO">Repeating keyword, round 2/4.</msg>
+<kw name="Vote" owner="Home">
+<kw name="Click Button" owner="SeleniumLibrary">
+<msg time="2024-10-06T10:10:19.597366" level="INFO">Clicking button '//div[@id="root"]/div/div[2]/button[1]'.</msg>
+<arg>//div[@id="root"]/div/div[2]/button[1]</arg>
+<doc>Clicks the button identified by ``locator``.</doc>
+<status status="PASS" start="2024-10-06T10:10:19.597366" elapsed="0.220522"/>
+</kw>
+<status status="PASS" start="2024-10-06T10:10:19.597366" elapsed="0.220522"/>
+</kw>
+<msg time="2024-10-06T10:10:19.817888" level="INFO">Repeating keyword, round 3/4.</msg>
+<kw name="Vote" owner="Home">
+<kw name="Click Button" owner="SeleniumLibrary">
+<msg time="2024-10-06T10:10:19.817888" level="INFO">Clicking button '//div[@id="root"]/div/div[2]/button[1]'.</msg>
+<arg>//div[@id="root"]/div/div[2]/button[1]</arg>
+<doc>Clicks the button identified by ``locator``.</doc>
+<status status="PASS" start="2024-10-06T10:10:19.817888" elapsed="0.219558"/>
+</kw>
+<status status="PASS" start="2024-10-06T10:10:19.817888" elapsed="0.219558"/>
+</kw>
+<msg time="2024-10-06T10:10:20.037446" level="INFO">Repeating keyword, round 4/4.</msg>
+<kw name="Vote" owner="Home">
+<kw name="Click Button" owner="SeleniumLibrary">
+<msg time="2024-10-06T10:10:20.037446" level="INFO">Clicking button '//div[@id="root"]/div/div[2]/button[1]'.</msg>
+<arg>//div[@id="root"]/div/div[2]/button[1]</arg>
+<doc>Clicks the button identified by ``locator``.</doc>
+<status status="PASS" start="2024-10-06T10:10:20.037446" elapsed="0.220373"/>
+</kw>
+<status status="PASS" start="2024-10-06T10:10:20.037446" elapsed="0.220373"/>
+</kw>
+<arg>${votes}</arg>
+<arg>Home.Vote</arg>
+<doc>Executes the specified keyword multiple times.</doc>
+<status status="PASS" start="2024-10-06T10:10:19.345639" elapsed="0.912180"/>
+</kw>
+<kw name="Get Current Anecdote" owner="Home">
+<kw name="Get Whole Text" owner="Home">
+<kw name="Get Text" owner="SeleniumLibrary">
+<msg time="2024-10-06T10:10:20.257819" level="INFO">${whole_text} = Anecdote of the day
+The first 90 percent of the code accounts for the first 90 percent of the development time...The remaining 10 percent of the code accounts for the other 90 percent of the developme...</msg>
+<var>${whole_text}</var>
+<arg>${ALL_TEXT}</arg>
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<status status="PASS" start="2024-10-06T10:10:20.257819" elapsed="0.000000"/>
+</kw>
+<return>
+<value>${whole_text}</value>
+<status status="PASS" start="2024-10-06T10:10:20.257819" elapsed="0.000000"/>
+</return>
+<msg time="2024-10-06T10:10:20.257819" level="INFO">${whole_text} = Anecdote of the day
+The first 90 percent of the code accounts for the first 90 percent of the development time...The remaining 10 percent of the code accounts for the other 90 percent of the developme...</msg>
+<var>${whole_text}</var>
+<status status="PASS" start="2024-10-06T10:10:20.257819" elapsed="0.000000"/>
+</kw>
+<kw name="Get Line" owner="String">
+<msg time="2024-10-06T10:10:20.257819" level="INFO">${2nd_line} = The first 90 percent of the code accounts for the first 90 percent of the development time...The remaining 10 percent of the code accounts for the other 90 percent of the development time.</msg>
+<var>${2nd_line}</var>
+<arg>${whole_text}</arg>
+<arg>1</arg>
+<doc>Returns the specified line from the given ``string``.</doc>
+<status status="PASS" start="2024-10-06T10:10:20.257819" elapsed="0.000000"/>
+</kw>
+<return>
+<value>${2nd_line}</value>
+<status status="PASS" start="2024-10-06T10:10:20.257819" elapsed="0.000000"/>
+</return>
+<msg time="2024-10-06T10:10:20.257819" level="INFO">${current_anecdote} = The first 90 percent of the code accounts for the first 90 percent of the development time...The remaining 10 percent of the code accounts for the other 90 percent of the development time.</msg>
+<var>${current_anecdote}</var>
+<status status="PASS" start="2024-10-06T10:10:20.257819" elapsed="0.000000"/>
+</kw>
+<kw name="Get Current Vote Count" owner="Home">
+<kw name="Get Whole Text" owner="Home">
+<kw name="Get Text" owner="SeleniumLibrary">
+<msg time="2024-10-06T10:10:20.273443" level="INFO">${whole_text} = Anecdote of the day
+The first 90 percent of the code accounts for the first 90 percent of the development time...The remaining 10 percent of the code accounts for the other 90 percent of the developme...</msg>
+<var>${whole_text}</var>
+<arg>${ALL_TEXT}</arg>
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<status status="PASS" start="2024-10-06T10:10:20.257819" elapsed="0.015624"/>
+</kw>
+<return>
+<value>${whole_text}</value>
+<status status="PASS" start="2024-10-06T10:10:20.273443" elapsed="0.000000"/>
+</return>
+<msg time="2024-10-06T10:10:20.273443" level="INFO">${whole_text} = Anecdote of the day
+The first 90 percent of the code accounts for the first 90 percent of the development time...The remaining 10 percent of the code accounts for the other 90 percent of the developme...</msg>
+<var>${whole_text}</var>
+<status status="PASS" start="2024-10-06T10:10:20.257819" elapsed="0.015624"/>
+</kw>
+<kw name="Get Line" owner="String">
+<msg time="2024-10-06T10:10:20.273443" level="INFO">${3rd_line} = has 4 votes</msg>
+<var>${3rd_line}</var>
+<arg>${whole_text}</arg>
+<arg>2</arg>
+<doc>Returns the specified line from the given ``string``.</doc>
+<status status="PASS" start="2024-10-06T10:10:20.273443" elapsed="0.000000"/>
+</kw>
+<kw name="Remove String" owner="String">
+<msg time="2024-10-06T10:10:20.273443" level="INFO">${current_votes_count} =  4 votes</msg>
+<var>${current_votes_count}</var>
+<arg>${3rd_line}</arg>
+<arg>has</arg>
+<doc>Removes all ``removables`` from the given ``string``.</doc>
+<status status="PASS" start="2024-10-06T10:10:20.273443" elapsed="0.000000"/>
+</kw>
+<kw name="Remove String" owner="String">
+<msg time="2024-10-06T10:10:20.273443" level="INFO">${current_votes_count} =  4 </msg>
+<var>${current_votes_count}</var>
+<arg>${current_votes_count}</arg>
+<arg>votes</arg>
+<doc>Removes all ``removables`` from the given ``string``.</doc>
+<status status="PASS" start="2024-10-06T10:10:20.273443" elapsed="0.000000"/>
+</kw>
+<kw name="Convert To Integer" owner="BuiltIn">
+<msg time="2024-10-06T10:10:20.273443" level="INFO">${current_votes_count} = 4</msg>
+<var>${current_votes_count}</var>
+<arg>${current_votes_count}</arg>
+<doc>Converts the given item to an integer number.</doc>
+<status status="PASS" start="2024-10-06T10:10:20.273443" elapsed="0.000000"/>
+</kw>
+<return>
+<value>${current_votes_count}</value>
+<status status="PASS" start="2024-10-06T10:10:20.273443" elapsed="0.000000"/>
+</return>
+<msg time="2024-10-06T10:10:20.273443" level="INFO">${current_votes} = 4</msg>
+<var>${current_votes}</var>
+<status status="PASS" start="2024-10-06T10:10:20.257819" elapsed="0.015624"/>
+</kw>
+<kw name="Set To Dictionary" owner="Collections">
+<arg>${DICT}</arg>
+<arg>${current_anecdote}=${current_votes}</arg>
+<doc>Adds the given ``key_value_pairs`` and/or ``items`` to the ``dictionary``.</doc>
+<status status="PASS" start="2024-10-06T10:10:20.273443" elapsed="0.000000"/>
+</kw>
+<arg>${VOTES - 1}</arg>
+<status status="PASS" start="2024-10-06T10:10:19.345639" elapsed="0.927804"/>
+</kw>
+<kw name="Current Vote Count Is Correct" owner="AnecdotesApp">
+<kw name="Get Current Vote Count" owner="Home">
+<kw name="Get Whole Text" owner="Home">
+<kw name="Get Text" owner="SeleniumLibrary">
+<msg time="2024-10-06T10:10:20.273443" level="INFO">${whole_text} = Anecdote of the day
+The first 90 percent of the code accounts for the first 90 percent of the development time...The remaining 10 percent of the code accounts for the other 90 percent of the developme...</msg>
+<var>${whole_text}</var>
+<arg>${ALL_TEXT}</arg>
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<status status="PASS" start="2024-10-06T10:10:20.273443" elapsed="0.000000"/>
+</kw>
+<return>
+<value>${whole_text}</value>
+<status status="PASS" start="2024-10-06T10:10:20.273443" elapsed="0.000000"/>
+</return>
+<msg time="2024-10-06T10:10:20.273443" level="INFO">${whole_text} = Anecdote of the day
+The first 90 percent of the code accounts for the first 90 percent of the development time...The remaining 10 percent of the code accounts for the other 90 percent of the developme...</msg>
+<var>${whole_text}</var>
+<status status="PASS" start="2024-10-06T10:10:20.273443" elapsed="0.000000"/>
+</kw>
+<kw name="Get Line" owner="String">
+<msg time="2024-10-06T10:10:20.289071" level="INFO">${3rd_line} = has 4 votes</msg>
+<var>${3rd_line}</var>
+<arg>${whole_text}</arg>
+<arg>2</arg>
+<doc>Returns the specified line from the given ``string``.</doc>
+<status status="PASS" start="2024-10-06T10:10:20.273443" elapsed="0.015628"/>
+</kw>
+<kw name="Remove String" owner="String">
+<msg time="2024-10-06T10:10:20.289071" level="INFO">${current_votes_count} =  4 votes</msg>
+<var>${current_votes_count}</var>
+<arg>${3rd_line}</arg>
+<arg>has</arg>
+<doc>Removes all ``removables`` from the given ``string``.</doc>
+<status status="PASS" start="2024-10-06T10:10:20.289071" elapsed="0.000000"/>
+</kw>
+<kw name="Remove String" owner="String">
+<msg time="2024-10-06T10:10:20.289071" level="INFO">${current_votes_count} =  4 </msg>
+<var>${current_votes_count}</var>
+<arg>${current_votes_count}</arg>
+<arg>votes</arg>
+<doc>Removes all ``removables`` from the given ``string``.</doc>
+<status status="PASS" start="2024-10-06T10:10:20.289071" elapsed="0.000000"/>
+</kw>
+<kw name="Convert To Integer" owner="BuiltIn">
+<msg time="2024-10-06T10:10:20.289071" level="INFO">${current_votes_count} = 4</msg>
+<var>${current_votes_count}</var>
+<arg>${current_votes_count}</arg>
+<doc>Converts the given item to an integer number.</doc>
+<status status="PASS" start="2024-10-06T10:10:20.289071" elapsed="0.000000"/>
+</kw>
+<return>
+<value>${current_votes_count}</value>
+<status status="PASS" start="2024-10-06T10:10:20.289071" elapsed="0.000000"/>
+</return>
+<msg time="2024-10-06T10:10:20.289071" level="INFO">${current_votes} = 4</msg>
+<var>${current_votes}</var>
+<status status="PASS" start="2024-10-06T10:10:20.273443" elapsed="0.015628"/>
+</kw>
+<kw name="Convert To Integer" owner="BuiltIn">
+<msg time="2024-10-06T10:10:20.289071" level="INFO">${votes} = 4</msg>
+<var>${votes}</var>
+<arg>${votes}</arg>
+<doc>Converts the given item to an integer number.</doc>
+<status status="PASS" start="2024-10-06T10:10:20.289071" elapsed="0.000000"/>
+</kw>
+<kw name="Should Be Equal" owner="BuiltIn">
+<arg>${current_votes}</arg>
+<arg>${votes}</arg>
+<doc>Fails if the given objects are unequal.</doc>
+<status status="PASS" start="2024-10-06T10:10:20.289071" elapsed="0.000000"/>
+</kw>
+<arg>${VOTES - 1}</arg>
+<status status="PASS" start="2024-10-06T10:10:20.273443" elapsed="0.015628"/>
+</kw>
+<kw name="Most Voted Anecdote Is Correct" owner="AnecdotesApp">
+<kw name="Set Variable" owner="BuiltIn">
+<msg time="2024-10-06T10:10:20.289071" level="INFO">${max_key} = ABC</msg>
+<var>${max_key}</var>
+<arg>ABC</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="PASS" start="2024-10-06T10:10:20.289071" elapsed="0.000000"/>
+</kw>
+<kw name="Set Variable" owner="BuiltIn">
+<msg time="2024-10-06T10:10:20.289071" level="INFO">${max_value} = -1</msg>
+<var>${max_value}</var>
+<arg>-1</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="PASS" start="2024-10-06T10:10:20.289071" elapsed="0.000000"/>
+</kw>
+<for flavor="IN">
+<iter>
+<if>
+<branch type="IF" condition="${value} &gt; ${max_value}">
+<kw name="Set Variable" owner="BuiltIn">
+<var>${max_key}</var>
+<arg>${key}</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="NOT RUN" start="2024-10-06T10:10:20.289071" elapsed="0.000000"/>
+</kw>
+<kw name="Set Variable" owner="BuiltIn">
+<var>${max_value}</var>
+<arg>${value}</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="NOT RUN" start="2024-10-06T10:10:20.289071" elapsed="0.000000"/>
+</kw>
+<status status="NOT RUN" start="2024-10-06T10:10:20.289071" elapsed="0.000000"/>
+</branch>
+<status status="PASS" start="2024-10-06T10:10:20.289071" elapsed="0.000000"/>
+</if>
+<var name="${key}"/>
+<var name="${value}">-1</var>
+<status status="PASS" start="2024-10-06T10:10:20.289071" elapsed="0.000000"/>
+</iter>
+<iter>
+<if>
+<branch type="IF" condition="${value} &gt; ${max_value}">
+<kw name="Set Variable" owner="BuiltIn">
+<msg time="2024-10-06T10:10:20.289071" level="INFO">${max_key} = If it hurts, do it more often.</msg>
+<var>${max_key}</var>
+<arg>${key}</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="PASS" start="2024-10-06T10:10:20.289071" elapsed="0.000000"/>
+</kw>
+<kw name="Set Variable" owner="BuiltIn">
+<msg time="2024-10-06T10:10:20.289071" level="INFO">${max_value} = 5</msg>
+<var>${max_value}</var>
+<arg>${value}</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="PASS" start="2024-10-06T10:10:20.289071" elapsed="0.000000"/>
+</kw>
+<status status="PASS" start="2024-10-06T10:10:20.289071" elapsed="0.000000"/>
+</branch>
+<status status="PASS" start="2024-10-06T10:10:20.289071" elapsed="0.000000"/>
+</if>
+<var name="${key}">If it hurts, do it more often.</var>
+<var name="${value}">5</var>
+<status status="PASS" start="2024-10-06T10:10:20.289071" elapsed="0.000000"/>
+</iter>
+<iter>
+<if>
+<branch type="IF" condition="${value} &gt; ${max_value}">
+<kw name="Set Variable" owner="BuiltIn">
+<var>${max_key}</var>
+<arg>${key}</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="NOT RUN" start="2024-10-06T10:10:20.289071" elapsed="0.000000"/>
+</kw>
+<kw name="Set Variable" owner="BuiltIn">
+<var>${max_value}</var>
+<arg>${value}</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="NOT RUN" start="2024-10-06T10:10:20.289071" elapsed="0.000000"/>
+</kw>
+<status status="NOT RUN" start="2024-10-06T10:10:20.289071" elapsed="0.000000"/>
+</branch>
+<status status="PASS" start="2024-10-06T10:10:20.289071" elapsed="0.000000"/>
+</if>
+<var name="${key}">The first 90 percent of the code accounts for the first 90 percent of the development time...The remaining 10 percent of the code accounts for the other 90 percent of the development time.</var>
+<var name="${value}">4</var>
+<status status="PASS" start="2024-10-06T10:10:20.289071" elapsed="0.000000"/>
+</iter>
+<var>${key}</var>
+<var>${value}</var>
+<value>&amp;{DICT}</value>
+<status status="PASS" start="2024-10-06T10:10:20.289071" elapsed="0.000000"/>
+</for>
+<kw name="Get Most Voted Count" owner="Home">
+<kw name="Get Most Voted Section Text" owner="Home">
+<kw name="Get Text" owner="SeleniumLibrary">
+<msg time="2024-10-06T10:10:20.296680" level="INFO">${text} = has 5 votes</msg>
+<var>${text}</var>
+<arg>${MOST_VOTED_COUNT_TEXT}</arg>
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<status status="PASS" start="2024-10-06T10:10:20.289071" elapsed="0.007609"/>
+</kw>
+<return>
+<value>${text}</value>
+<status status="PASS" start="2024-10-06T10:10:20.296680" elapsed="0.000000"/>
+</return>
+<msg time="2024-10-06T10:10:20.296680" level="INFO">${most_votes_count} = has 5 votes</msg>
+<var>${most_votes_count}</var>
+<status status="PASS" start="2024-10-06T10:10:20.289071" elapsed="0.007609"/>
+</kw>
+<kw name="Remove String" owner="String">
+<msg time="2024-10-06T10:10:20.296680" level="INFO">${most_votes_count} =  5 </msg>
+<var>${most_votes_count}</var>
+<arg>${most_votes_count}</arg>
+<arg>has</arg>
+<arg>votes</arg>
+<doc>Removes all ``removables`` from the given ``string``.</doc>
+<status status="PASS" start="2024-10-06T10:10:20.296680" elapsed="0.000000"/>
+</kw>
+<kw name="Convert To Integer" owner="BuiltIn">
+<msg time="2024-10-06T10:10:20.296680" level="INFO">${most_votes_count} = 5</msg>
+<var>${most_votes_count}</var>
+<arg>${most_votes_count}</arg>
+<doc>Converts the given item to an integer number.</doc>
+<status status="PASS" start="2024-10-06T10:10:20.296680" elapsed="0.000000"/>
+</kw>
+<return>
+<value>${most_votes_count}</value>
+<status status="PASS" start="2024-10-06T10:10:20.296680" elapsed="0.000000"/>
+</return>
+<msg time="2024-10-06T10:10:20.296680" level="INFO">${most_votes} = 5</msg>
+<var>${most_votes}</var>
+<status status="PASS" start="2024-10-06T10:10:20.289071" elapsed="0.007609"/>
+</kw>
+<kw name="Should Be Equal" owner="BuiltIn">
+<arg>${most_votes}</arg>
+<arg>${max_value}</arg>
+<doc>Fails if the given objects are unequal.</doc>
+<status status="PASS" start="2024-10-06T10:10:20.296680" elapsed="0.000000"/>
+</kw>
+<kw name="Get Most Voted Anecdote" owner="Home">
+<kw name="Get Most Voted Section Text" owner="Home">
+<kw name="Get Text" owner="SeleniumLibrary">
+<msg time="2024-10-06T10:10:20.305285" level="INFO">${text} = has 5 votes</msg>
+<var>${text}</var>
+<arg>${MOST_VOTED_COUNT_TEXT}</arg>
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<status status="PASS" start="2024-10-06T10:10:20.296680" elapsed="0.008605"/>
+</kw>
+<return>
+<value>${text}</value>
+<status status="PASS" start="2024-10-06T10:10:20.305285" elapsed="0.000000"/>
+</return>
+<msg time="2024-10-06T10:10:20.305285" level="INFO">${most_votes_count} = has 5 votes</msg>
+<var>${most_votes_count}</var>
+<status status="PASS" start="2024-10-06T10:10:20.296680" elapsed="0.008605"/>
+</kw>
+<kw name="Get Text" owner="SeleniumLibrary">
+<msg time="2024-10-06T10:10:20.305285" level="INFO">${anecdote} = Anecdote with most votes
+If it hurts, do it more often.
+has 5 votes</msg>
+<var>${anecdote}</var>
+<arg>${MOST_VOTED_ANECDOTE}</arg>
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<status status="PASS" start="2024-10-06T10:10:20.305285" elapsed="0.000000"/>
+</kw>
+<kw name="Remove String" owner="String">
+<msg time="2024-10-06T10:10:20.305285" level="INFO">${anecdote} = If it hurts, do it more often.</msg>
+<var>${anecdote}</var>
+<arg>${anecdote}</arg>
+<arg>Anecdote with most votes\n</arg>
+<arg>\n${most_votes_count}</arg>
+<doc>Removes all ``removables`` from the given ``string``.</doc>
+<status status="PASS" start="2024-10-06T10:10:20.305285" elapsed="0.000000"/>
+</kw>
+<return>
+<value>${anecdote}</value>
+<status status="PASS" start="2024-10-06T10:10:20.305285" elapsed="0.000000"/>
+</return>
+<msg time="2024-10-06T10:10:20.305285" level="INFO">${most_voted_anecdote} = If it hurts, do it more often.</msg>
+<var>${most_voted_anecdote}</var>
+<status status="PASS" start="2024-10-06T10:10:20.296680" elapsed="0.008605"/>
+</kw>
+<kw name="Should Be Equal" owner="BuiltIn">
+<arg>${most_voted_anecdote}</arg>
+<arg>${max_key}</arg>
+<doc>Fails if the given objects are unequal.</doc>
+<status status="PASS" start="2024-10-06T10:10:20.305285" elapsed="0.015739"/>
+</kw>
+<status status="PASS" start="2024-10-06T10:10:20.289071" elapsed="0.031953"/>
+</kw>
+<kw name="Vote for anecdote" owner="AnecdotesApp">
+<kw name="Repeat Keyword" owner="BuiltIn">
+<msg time="2024-10-06T10:10:20.321024" level="INFO">Repeating keyword, round 1/2.</msg>
+<kw name="Vote" owner="Home">
+<kw name="Click Button" owner="SeleniumLibrary">
+<msg time="2024-10-06T10:10:20.321024" level="INFO">Clicking button '//div[@id="root"]/div/div[2]/button[1]'.</msg>
+<arg>//div[@id="root"]/div/div[2]/button[1]</arg>
+<doc>Clicks the button identified by ``locator``.</doc>
+<status status="PASS" start="2024-10-06T10:10:20.321024" elapsed="0.220488"/>
+</kw>
+<status status="PASS" start="2024-10-06T10:10:20.321024" elapsed="0.220488"/>
+</kw>
+<msg time="2024-10-06T10:10:20.541512" level="INFO">Repeating keyword, round 2/2.</msg>
+<kw name="Vote" owner="Home">
+<kw name="Click Button" owner="SeleniumLibrary">
+<msg time="2024-10-06T10:10:20.541512" level="INFO">Clicking button '//div[@id="root"]/div/div[2]/button[1]'.</msg>
+<arg>//div[@id="root"]/div/div[2]/button[1]</arg>
+<doc>Clicks the button identified by ``locator``.</doc>
+<status status="PASS" start="2024-10-06T10:10:20.541512" elapsed="0.220760"/>
+</kw>
+<status status="PASS" start="2024-10-06T10:10:20.541512" elapsed="0.220760"/>
+</kw>
+<arg>${votes}</arg>
+<arg>Home.Vote</arg>
+<doc>Executes the specified keyword multiple times.</doc>
+<status status="PASS" start="2024-10-06T10:10:20.321024" elapsed="0.441248"/>
+</kw>
+<kw name="Get Current Anecdote" owner="Home">
+<kw name="Get Whole Text" owner="Home">
+<kw name="Get Text" owner="SeleniumLibrary">
+<msg time="2024-10-06T10:10:20.762272" level="INFO">${whole_text} = Anecdote of the day
+The first 90 percent of the code accounts for the first 90 percent of the development time...The remaining 10 percent of the code accounts for the other 90 percent of the developme...</msg>
+<var>${whole_text}</var>
+<arg>${ALL_TEXT}</arg>
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<status status="PASS" start="2024-10-06T10:10:20.762272" elapsed="0.000000"/>
+</kw>
+<return>
+<value>${whole_text}</value>
+<status status="PASS" start="2024-10-06T10:10:20.762272" elapsed="0.000000"/>
+</return>
+<msg time="2024-10-06T10:10:20.762272" level="INFO">${whole_text} = Anecdote of the day
+The first 90 percent of the code accounts for the first 90 percent of the development time...The remaining 10 percent of the code accounts for the other 90 percent of the developme...</msg>
+<var>${whole_text}</var>
+<status status="PASS" start="2024-10-06T10:10:20.762272" elapsed="0.000000"/>
+</kw>
+<kw name="Get Line" owner="String">
+<msg time="2024-10-06T10:10:20.762272" level="INFO">${2nd_line} = The first 90 percent of the code accounts for the first 90 percent of the development time...The remaining 10 percent of the code accounts for the other 90 percent of the development time.</msg>
+<var>${2nd_line}</var>
+<arg>${whole_text}</arg>
+<arg>1</arg>
+<doc>Returns the specified line from the given ``string``.</doc>
+<status status="PASS" start="2024-10-06T10:10:20.762272" elapsed="0.000000"/>
+</kw>
+<return>
+<value>${2nd_line}</value>
+<status status="PASS" start="2024-10-06T10:10:20.762272" elapsed="0.000000"/>
+</return>
+<msg time="2024-10-06T10:10:20.762272" level="INFO">${current_anecdote} = The first 90 percent of the code accounts for the first 90 percent of the development time...The remaining 10 percent of the code accounts for the other 90 percent of the development time.</msg>
+<var>${current_anecdote}</var>
+<status status="PASS" start="2024-10-06T10:10:20.762272" elapsed="0.000000"/>
+</kw>
+<kw name="Get Current Vote Count" owner="Home">
+<kw name="Get Whole Text" owner="Home">
+<kw name="Get Text" owner="SeleniumLibrary">
+<msg time="2024-10-06T10:10:20.778009" level="INFO">${whole_text} = Anecdote of the day
+The first 90 percent of the code accounts for the first 90 percent of the development time...The remaining 10 percent of the code accounts for the other 90 percent of the developme...</msg>
+<var>${whole_text}</var>
+<arg>${ALL_TEXT}</arg>
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<status status="PASS" start="2024-10-06T10:10:20.762272" elapsed="0.015737"/>
+</kw>
+<return>
+<value>${whole_text}</value>
+<status status="PASS" start="2024-10-06T10:10:20.778009" elapsed="0.000000"/>
+</return>
+<msg time="2024-10-06T10:10:20.778009" level="INFO">${whole_text} = Anecdote of the day
+The first 90 percent of the code accounts for the first 90 percent of the development time...The remaining 10 percent of the code accounts for the other 90 percent of the developme...</msg>
+<var>${whole_text}</var>
+<status status="PASS" start="2024-10-06T10:10:20.762272" elapsed="0.015737"/>
+</kw>
+<kw name="Get Line" owner="String">
+<msg time="2024-10-06T10:10:20.778009" level="INFO">${3rd_line} = has 6 votes</msg>
+<var>${3rd_line}</var>
+<arg>${whole_text}</arg>
+<arg>2</arg>
+<doc>Returns the specified line from the given ``string``.</doc>
+<status status="PASS" start="2024-10-06T10:10:20.778009" elapsed="0.000000"/>
+</kw>
+<kw name="Remove String" owner="String">
+<msg time="2024-10-06T10:10:20.778009" level="INFO">${current_votes_count} =  6 votes</msg>
+<var>${current_votes_count}</var>
+<arg>${3rd_line}</arg>
+<arg>has</arg>
+<doc>Removes all ``removables`` from the given ``string``.</doc>
+<status status="PASS" start="2024-10-06T10:10:20.778009" elapsed="0.000000"/>
+</kw>
+<kw name="Remove String" owner="String">
+<msg time="2024-10-06T10:10:20.778009" level="INFO">${current_votes_count} =  6 </msg>
+<var>${current_votes_count}</var>
+<arg>${current_votes_count}</arg>
+<arg>votes</arg>
+<doc>Removes all ``removables`` from the given ``string``.</doc>
+<status status="PASS" start="2024-10-06T10:10:20.778009" elapsed="0.000000"/>
+</kw>
+<kw name="Convert To Integer" owner="BuiltIn">
+<msg time="2024-10-06T10:10:20.778009" level="INFO">${current_votes_count} = 6</msg>
+<var>${current_votes_count}</var>
+<arg>${current_votes_count}</arg>
+<doc>Converts the given item to an integer number.</doc>
+<status status="PASS" start="2024-10-06T10:10:20.778009" elapsed="0.000000"/>
+</kw>
+<return>
+<value>${current_votes_count}</value>
+<status status="PASS" start="2024-10-06T10:10:20.778009" elapsed="0.000000"/>
+</return>
+<msg time="2024-10-06T10:10:20.778009" level="INFO">${current_votes} = 6</msg>
+<var>${current_votes}</var>
+<status status="PASS" start="2024-10-06T10:10:20.762272" elapsed="0.015737"/>
+</kw>
+<kw name="Set To Dictionary" owner="Collections">
+<arg>${DICT}</arg>
+<arg>${current_anecdote}=${current_votes}</arg>
+<doc>Adds the given ``key_value_pairs`` and/or ``items`` to the ``dictionary``.</doc>
+<status status="PASS" start="2024-10-06T10:10:20.778009" elapsed="0.000000"/>
+</kw>
+<arg>2</arg>
+<status status="PASS" start="2024-10-06T10:10:20.321024" elapsed="0.456985"/>
+</kw>
+<kw name="Current Vote Count Is Correct" owner="AnecdotesApp">
+<kw name="Get Current Vote Count" owner="Home">
+<kw name="Get Whole Text" owner="Home">
+<kw name="Get Text" owner="SeleniumLibrary">
+<msg time="2024-10-06T10:10:20.793628" level="INFO">${whole_text} = Anecdote of the day
+The first 90 percent of the code accounts for the first 90 percent of the development time...The remaining 10 percent of the code accounts for the other 90 percent of the developme...</msg>
+<var>${whole_text}</var>
+<arg>${ALL_TEXT}</arg>
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<status status="PASS" start="2024-10-06T10:10:20.778009" elapsed="0.015619"/>
+</kw>
+<return>
+<value>${whole_text}</value>
+<status status="PASS" start="2024-10-06T10:10:20.793628" elapsed="0.000000"/>
+</return>
+<msg time="2024-10-06T10:10:20.793628" level="INFO">${whole_text} = Anecdote of the day
+The first 90 percent of the code accounts for the first 90 percent of the development time...The remaining 10 percent of the code accounts for the other 90 percent of the developme...</msg>
+<var>${whole_text}</var>
+<status status="PASS" start="2024-10-06T10:10:20.778009" elapsed="0.015619"/>
+</kw>
+<kw name="Get Line" owner="String">
+<msg time="2024-10-06T10:10:20.793628" level="INFO">${3rd_line} = has 6 votes</msg>
+<var>${3rd_line}</var>
+<arg>${whole_text}</arg>
+<arg>2</arg>
+<doc>Returns the specified line from the given ``string``.</doc>
+<status status="PASS" start="2024-10-06T10:10:20.793628" elapsed="0.000000"/>
+</kw>
+<kw name="Remove String" owner="String">
+<msg time="2024-10-06T10:10:20.793628" level="INFO">${current_votes_count} =  6 votes</msg>
+<var>${current_votes_count}</var>
+<arg>${3rd_line}</arg>
+<arg>has</arg>
+<doc>Removes all ``removables`` from the given ``string``.</doc>
+<status status="PASS" start="2024-10-06T10:10:20.793628" elapsed="0.000000"/>
+</kw>
+<kw name="Remove String" owner="String">
+<msg time="2024-10-06T10:10:20.793628" level="INFO">${current_votes_count} =  6 </msg>
+<var>${current_votes_count}</var>
+<arg>${current_votes_count}</arg>
+<arg>votes</arg>
+<doc>Removes all ``removables`` from the given ``string``.</doc>
+<status status="PASS" start="2024-10-06T10:10:20.793628" elapsed="0.000000"/>
+</kw>
+<kw name="Convert To Integer" owner="BuiltIn">
+<msg time="2024-10-06T10:10:20.793628" level="INFO">${current_votes_count} = 6</msg>
+<var>${current_votes_count}</var>
+<arg>${current_votes_count}</arg>
+<doc>Converts the given item to an integer number.</doc>
+<status status="PASS" start="2024-10-06T10:10:20.793628" elapsed="0.000000"/>
+</kw>
+<return>
+<value>${current_votes_count}</value>
+<status status="PASS" start="2024-10-06T10:10:20.793628" elapsed="0.000000"/>
+</return>
+<msg time="2024-10-06T10:10:20.793628" level="INFO">${current_votes} = 6</msg>
+<var>${current_votes}</var>
+<status status="PASS" start="2024-10-06T10:10:20.778009" elapsed="0.015619"/>
+</kw>
+<kw name="Convert To Integer" owner="BuiltIn">
+<msg time="2024-10-06T10:10:20.793628" level="INFO">${votes} = 6</msg>
+<var>${votes}</var>
+<arg>${votes}</arg>
+<doc>Converts the given item to an integer number.</doc>
+<status status="PASS" start="2024-10-06T10:10:20.793628" elapsed="0.000000"/>
+</kw>
+<kw name="Should Be Equal" owner="BuiltIn">
+<arg>${current_votes}</arg>
+<arg>${votes}</arg>
+<doc>Fails if the given objects are unequal.</doc>
+<status status="PASS" start="2024-10-06T10:10:20.793628" elapsed="0.000000"/>
+</kw>
+<arg>${VOTES + 1}</arg>
+<status status="PASS" start="2024-10-06T10:10:20.778009" elapsed="0.015619"/>
+</kw>
+<kw name="Most Voted Anecdote Is Correct" owner="AnecdotesApp">
+<kw name="Set Variable" owner="BuiltIn">
+<msg time="2024-10-06T10:10:20.793628" level="INFO">${max_key} = ABC</msg>
+<var>${max_key}</var>
+<arg>ABC</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="PASS" start="2024-10-06T10:10:20.793628" elapsed="0.000000"/>
+</kw>
+<kw name="Set Variable" owner="BuiltIn">
+<msg time="2024-10-06T10:10:20.793628" level="INFO">${max_value} = -1</msg>
+<var>${max_value}</var>
+<arg>-1</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="PASS" start="2024-10-06T10:10:20.793628" elapsed="0.000000"/>
+</kw>
+<for flavor="IN">
+<iter>
+<if>
+<branch type="IF" condition="${value} &gt; ${max_value}">
+<kw name="Set Variable" owner="BuiltIn">
+<var>${max_key}</var>
+<arg>${key}</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="NOT RUN" start="2024-10-06T10:10:20.793628" elapsed="0.000000"/>
+</kw>
+<kw name="Set Variable" owner="BuiltIn">
+<var>${max_value}</var>
+<arg>${value}</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="NOT RUN" start="2024-10-06T10:10:20.798236" elapsed="0.000000"/>
+</kw>
+<status status="NOT RUN" start="2024-10-06T10:10:20.793628" elapsed="0.004608"/>
+</branch>
+<status status="PASS" start="2024-10-06T10:10:20.793628" elapsed="0.004608"/>
+</if>
+<var name="${key}"/>
+<var name="${value}">-1</var>
+<status status="PASS" start="2024-10-06T10:10:20.793628" elapsed="0.004608"/>
+</iter>
+<iter>
+<if>
+<branch type="IF" condition="${value} &gt; ${max_value}">
+<kw name="Set Variable" owner="BuiltIn">
+<msg time="2024-10-06T10:10:20.798236" level="INFO">${max_key} = If it hurts, do it more often.</msg>
+<var>${max_key}</var>
+<arg>${key}</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="PASS" start="2024-10-06T10:10:20.798236" elapsed="0.000000"/>
+</kw>
+<kw name="Set Variable" owner="BuiltIn">
+<msg time="2024-10-06T10:10:20.798236" level="INFO">${max_value} = 5</msg>
+<var>${max_value}</var>
+<arg>${value}</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="PASS" start="2024-10-06T10:10:20.798236" elapsed="0.000000"/>
+</kw>
+<status status="PASS" start="2024-10-06T10:10:20.798236" elapsed="0.000000"/>
+</branch>
+<status status="PASS" start="2024-10-06T10:10:20.798236" elapsed="0.000000"/>
+</if>
+<var name="${key}">If it hurts, do it more often.</var>
+<var name="${value}">5</var>
+<status status="PASS" start="2024-10-06T10:10:20.798236" elapsed="0.000000"/>
+</iter>
+<iter>
+<if>
+<branch type="IF" condition="${value} &gt; ${max_value}">
+<kw name="Set Variable" owner="BuiltIn">
+<msg time="2024-10-06T10:10:20.798236" level="INFO">${max_key} = The first 90 percent of the code accounts for the first 90 percent of the development time...The remaining 10 percent of the code accounts for the other 90 percent of the development time.</msg>
+<var>${max_key}</var>
+<arg>${key}</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="PASS" start="2024-10-06T10:10:20.798236" elapsed="0.000000"/>
+</kw>
+<kw name="Set Variable" owner="BuiltIn">
+<msg time="2024-10-06T10:10:20.798236" level="INFO">${max_value} = 6</msg>
+<var>${max_value}</var>
+<arg>${value}</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="PASS" start="2024-10-06T10:10:20.798236" elapsed="0.000000"/>
+</kw>
+<status status="PASS" start="2024-10-06T10:10:20.798236" elapsed="0.000000"/>
+</branch>
+<status status="PASS" start="2024-10-06T10:10:20.798236" elapsed="0.000000"/>
+</if>
+<var name="${key}">The first 90 percent of the code accounts for the first 90 percent of the development time...The remaining 10 percent of the code accounts for the other 90 percent of the development time.</var>
+<var name="${value}">6</var>
+<status status="PASS" start="2024-10-06T10:10:20.798236" elapsed="0.000000"/>
+</iter>
+<var>${key}</var>
+<var>${value}</var>
+<value>&amp;{DICT}</value>
+<status status="PASS" start="2024-10-06T10:10:20.793628" elapsed="0.004608"/>
+</for>
+<kw name="Get Most Voted Count" owner="Home">
+<kw name="Get Most Voted Section Text" owner="Home">
+<kw name="Get Text" owner="SeleniumLibrary">
+<msg time="2024-10-06T10:10:20.798236" level="INFO">${text} = has 6 votes</msg>
+<var>${text}</var>
+<arg>${MOST_VOTED_COUNT_TEXT}</arg>
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<status status="PASS" start="2024-10-06T10:10:20.798236" elapsed="0.000000"/>
+</kw>
+<return>
+<value>${text}</value>
+<status status="PASS" start="2024-10-06T10:10:20.798236" elapsed="0.000000"/>
+</return>
+<msg time="2024-10-06T10:10:20.798236" level="INFO">${most_votes_count} = has 6 votes</msg>
+<var>${most_votes_count}</var>
+<status status="PASS" start="2024-10-06T10:10:20.798236" elapsed="0.000000"/>
+</kw>
+<kw name="Remove String" owner="String">
+<msg time="2024-10-06T10:10:20.798236" level="INFO">${most_votes_count} =  6 </msg>
+<var>${most_votes_count}</var>
+<arg>${most_votes_count}</arg>
+<arg>has</arg>
+<arg>votes</arg>
+<doc>Removes all ``removables`` from the given ``string``.</doc>
+<status status="PASS" start="2024-10-06T10:10:20.798236" elapsed="0.000000"/>
+</kw>
+<kw name="Convert To Integer" owner="BuiltIn">
+<msg time="2024-10-06T10:10:20.798236" level="INFO">${most_votes_count} = 6</msg>
+<var>${most_votes_count}</var>
+<arg>${most_votes_count}</arg>
+<doc>Converts the given item to an integer number.</doc>
+<status status="PASS" start="2024-10-06T10:10:20.798236" elapsed="0.000000"/>
+</kw>
+<return>
+<value>${most_votes_count}</value>
+<status status="PASS" start="2024-10-06T10:10:20.798236" elapsed="0.000000"/>
+</return>
+<msg time="2024-10-06T10:10:20.798236" level="INFO">${most_votes} = 6</msg>
+<var>${most_votes}</var>
+<status status="PASS" start="2024-10-06T10:10:20.798236" elapsed="0.000000"/>
+</kw>
+<kw name="Should Be Equal" owner="BuiltIn">
+<arg>${most_votes}</arg>
+<arg>${max_value}</arg>
+<doc>Fails if the given objects are unequal.</doc>
+<status status="PASS" start="2024-10-06T10:10:20.798236" elapsed="0.000000"/>
+</kw>
+<kw name="Get Most Voted Anecdote" owner="Home">
+<kw name="Get Most Voted Section Text" owner="Home">
+<kw name="Get Text" owner="SeleniumLibrary">
+<msg time="2024-10-06T10:10:20.815458" level="INFO">${text} = has 6 votes</msg>
+<var>${text}</var>
+<arg>${MOST_VOTED_COUNT_TEXT}</arg>
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<status status="PASS" start="2024-10-06T10:10:20.798236" elapsed="0.017222"/>
+</kw>
+<return>
+<value>${text}</value>
+<status status="PASS" start="2024-10-06T10:10:20.815458" elapsed="0.000000"/>
+</return>
+<msg time="2024-10-06T10:10:20.815458" level="INFO">${most_votes_count} = has 6 votes</msg>
+<var>${most_votes_count}</var>
+<status status="PASS" start="2024-10-06T10:10:20.798236" elapsed="0.017222"/>
+</kw>
+<kw name="Get Text" owner="SeleniumLibrary">
+<msg time="2024-10-06T10:10:20.826074" level="INFO">${anecdote} = Anecdote with most votes
+The first 90 percent of the code accounts for the first 90 percent of the development time...The remaining 10 percent of the code accounts for the other 90 percent of the deve...</msg>
+<var>${anecdote}</var>
+<arg>${MOST_VOTED_ANECDOTE}</arg>
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<status status="PASS" start="2024-10-06T10:10:20.815458" elapsed="0.010616"/>
+</kw>
+<kw name="Remove String" owner="String">
+<msg time="2024-10-06T10:10:20.826074" level="INFO">${anecdote} = The first 90 percent of the code accounts for the first 90 percent of the development time...The remaining 10 percent of the code accounts for the other 90 percent of the development time.</msg>
+<var>${anecdote}</var>
+<arg>${anecdote}</arg>
+<arg>Anecdote with most votes\n</arg>
+<arg>\n${most_votes_count}</arg>
+<doc>Removes all ``removables`` from the given ``string``.</doc>
+<status status="PASS" start="2024-10-06T10:10:20.826074" elapsed="0.000000"/>
+</kw>
+<return>
+<value>${anecdote}</value>
+<status status="PASS" start="2024-10-06T10:10:20.826074" elapsed="0.000000"/>
+</return>
+<msg time="2024-10-06T10:10:20.826074" level="INFO">${most_voted_anecdote} = The first 90 percent of the code accounts for the first 90 percent of the development time...The remaining 10 percent of the code accounts for the other 90 percent of the development time.</msg>
+<var>${most_voted_anecdote}</var>
+<status status="PASS" start="2024-10-06T10:10:20.798236" elapsed="0.027838"/>
+</kw>
+<kw name="Should Be Equal" owner="BuiltIn">
+<arg>${most_voted_anecdote}</arg>
+<arg>${max_key}</arg>
+<doc>Fails if the given objects are unequal.</doc>
+<status status="PASS" start="2024-10-06T10:10:20.826074" elapsed="0.000000"/>
+</kw>
+<status status="PASS" start="2024-10-06T10:10:20.793628" elapsed="0.032446"/>
+</kw>
+<kw name="Verify Number Of Votes" owner="AnecdotesApp">
+<kw name="Get Most Voted Count" owner="Home">
+<kw name="Get Most Voted Section Text" owner="Home">
+<kw name="Get Text" owner="SeleniumLibrary">
+<msg time="2024-10-06T10:10:20.826074" level="INFO">${text} = has 6 votes</msg>
+<var>${text}</var>
+<arg>${MOST_VOTED_COUNT_TEXT}</arg>
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<status status="PASS" start="2024-10-06T10:10:20.826074" elapsed="0.000000"/>
+</kw>
+<return>
+<value>${text}</value>
+<status status="PASS" start="2024-10-06T10:10:20.826074" elapsed="0.000000"/>
+</return>
+<msg time="2024-10-06T10:10:20.826074" level="INFO">${most_votes_count} = has 6 votes</msg>
+<var>${most_votes_count}</var>
+<status status="PASS" start="2024-10-06T10:10:20.826074" elapsed="0.000000"/>
+</kw>
+<kw name="Remove String" owner="String">
+<msg time="2024-10-06T10:10:20.826074" level="INFO">${most_votes_count} =  6 </msg>
+<var>${most_votes_count}</var>
+<arg>${most_votes_count}</arg>
+<arg>has</arg>
+<arg>votes</arg>
+<doc>Removes all ``removables`` from the given ``string``.</doc>
+<status status="PASS" start="2024-10-06T10:10:20.826074" elapsed="0.000000"/>
+</kw>
+<kw name="Convert To Integer" owner="BuiltIn">
+<msg time="2024-10-06T10:10:20.826074" level="INFO">${most_votes_count} = 6</msg>
+<var>${most_votes_count}</var>
+<arg>${most_votes_count}</arg>
+<doc>Converts the given item to an integer number.</doc>
+<status status="PASS" start="2024-10-06T10:10:20.826074" elapsed="0.000000"/>
+</kw>
+<return>
+<value>${most_votes_count}</value>
+<status status="PASS" start="2024-10-06T10:10:20.826074" elapsed="0.000000"/>
+</return>
+<msg time="2024-10-06T10:10:20.826074" level="INFO">${most_votes} = 6</msg>
+<var>${most_votes}</var>
+<status status="PASS" start="2024-10-06T10:10:20.826074" elapsed="0.000000"/>
+</kw>
+<for flavor="IN RANGE">
+<iter>
+<kw name="&quot;Next Anecdote&quot; functionality returns new anecdote" owner="AnecdotesApp">
+<kw name="Get Current Anecdote" owner="Home">
+<kw name="Get Whole Text" owner="Home">
+<kw name="Get Text" owner="SeleniumLibrary">
+<msg time="2024-10-06T10:10:20.841707" level="INFO">${whole_text} = Anecdote of the day
+The first 90 percent of the code accounts for the first 90 percent of the development time...The remaining 10 percent of the code accounts for the other 90 percent of the developme...</msg>
+<var>${whole_text}</var>
+<arg>${ALL_TEXT}</arg>
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<status status="PASS" start="2024-10-06T10:10:20.826074" elapsed="0.015633"/>
+</kw>
+<return>
+<value>${whole_text}</value>
+<status status="PASS" start="2024-10-06T10:10:20.841707" elapsed="0.000000"/>
+</return>
+<msg time="2024-10-06T10:10:20.841707" level="INFO">${whole_text} = Anecdote of the day
+The first 90 percent of the code accounts for the first 90 percent of the development time...The remaining 10 percent of the code accounts for the other 90 percent of the developme...</msg>
+<var>${whole_text}</var>
+<status status="PASS" start="2024-10-06T10:10:20.826074" elapsed="0.015633"/>
+</kw>
+<kw name="Get Line" owner="String">
+<msg time="2024-10-06T10:10:20.841707" level="INFO">${2nd_line} = The first 90 percent of the code accounts for the first 90 percent of the development time...The remaining 10 percent of the code accounts for the other 90 percent of the development time.</msg>
+<var>${2nd_line}</var>
+<arg>${whole_text}</arg>
+<arg>1</arg>
+<doc>Returns the specified line from the given ``string``.</doc>
+<status status="PASS" start="2024-10-06T10:10:20.841707" elapsed="0.000000"/>
+</kw>
+<return>
+<value>${2nd_line}</value>
+<status status="PASS" start="2024-10-06T10:10:20.841707" elapsed="0.000000"/>
+</return>
+<msg time="2024-10-06T10:10:20.841707" level="INFO">${old_anecdote} = The first 90 percent of the code accounts for the first 90 percent of the development time...The remaining 10 percent of the code accounts for the other 90 percent of the development time.</msg>
+<var>${old_anecdote}</var>
+<status status="PASS" start="2024-10-06T10:10:20.826074" elapsed="0.015633"/>
+</kw>
+<for flavor="IN RANGE">
+<iter>
+<kw name="Get New Anecdote" owner="Home">
+<kw name="Click Button" owner="SeleniumLibrary">
+<msg time="2024-10-06T10:10:20.841707" level="INFO">Clicking button '//div[@id="root"]/div/div[2]/button[2]'.</msg>
+<arg>//div[@id="root"]/div/div[2]/button[2]</arg>
+<doc>Clicks the button identified by ``locator``.</doc>
+<status status="PASS" start="2024-10-06T10:10:20.841707" elapsed="0.235276"/>
+</kw>
+<status status="PASS" start="2024-10-06T10:10:20.841707" elapsed="0.235276"/>
+</kw>
+<kw name="Get Current Anecdote" owner="Home">
+<kw name="Get Whole Text" owner="Home">
+<kw name="Get Text" owner="SeleniumLibrary">
+<msg time="2024-10-06T10:10:21.076983" level="INFO">${whole_text} = Anecdote of the day
+Any fool can write code that a computer can understand. Good programmers write code that humans can understand.
+has 0 votes
+votenext anecdote
+Anecdote with most votes
+The first 90 ...</msg>
+<var>${whole_text}</var>
+<arg>${ALL_TEXT}</arg>
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<status status="PASS" start="2024-10-06T10:10:21.076983" elapsed="0.000000"/>
+</kw>
+<return>
+<value>${whole_text}</value>
+<status status="PASS" start="2024-10-06T10:10:21.076983" elapsed="0.000000"/>
+</return>
+<msg time="2024-10-06T10:10:21.076983" level="INFO">${whole_text} = Anecdote of the day
+Any fool can write code that a computer can understand. Good programmers write code that humans can understand.
+has 0 votes
+votenext anecdote
+Anecdote with most votes
+The first 90 ...</msg>
+<var>${whole_text}</var>
+<status status="PASS" start="2024-10-06T10:10:21.076983" elapsed="0.000000"/>
+</kw>
+<kw name="Get Line" owner="String">
+<msg time="2024-10-06T10:10:21.076983" level="INFO">${2nd_line} = Any fool can write code that a computer can understand. Good programmers write code that humans can understand.</msg>
+<var>${2nd_line}</var>
+<arg>${whole_text}</arg>
+<arg>1</arg>
+<doc>Returns the specified line from the given ``string``.</doc>
+<status status="PASS" start="2024-10-06T10:10:21.076983" elapsed="0.000000"/>
+</kw>
+<return>
+<value>${2nd_line}</value>
+<status status="PASS" start="2024-10-06T10:10:21.076983" elapsed="0.000000"/>
+</return>
+<msg time="2024-10-06T10:10:21.076983" level="INFO">${new_anecdote} = Any fool can write code that a computer can understand. Good programmers write code that humans can understand.</msg>
+<var>${new_anecdote}</var>
+<status status="PASS" start="2024-10-06T10:10:21.076983" elapsed="0.000000"/>
+</kw>
+<if>
+<branch type="IF" condition="'$old_anecdote' != '$new_anecdote'">
+<return>
+<value>${new_anecdote}</value>
+<status status="PASS" start="2024-10-06T10:10:21.076983" elapsed="0.000000"/>
+</return>
+<status status="PASS" start="2024-10-06T10:10:21.076983" elapsed="0.000000"/>
+</branch>
+<status status="PASS" start="2024-10-06T10:10:21.076983" elapsed="0.000000"/>
+</if>
+<var name="${index}">0</var>
+<status status="PASS" start="2024-10-06T10:10:20.841707" elapsed="0.235276"/>
+</iter>
+<var>${index}</var>
+<value>${TRIES}</value>
+<status status="PASS" start="2024-10-06T10:10:20.841707" elapsed="0.235276"/>
+</for>
+<kw name="Fail" owner="BuiltIn">
+<arg>The anecdote was not changed</arg>
+<doc>Fails the test with the given message and optionally alters its tags.</doc>
+<status status="NOT RUN" start="2024-10-06T10:10:21.076983" elapsed="0.000000"/>
+</kw>
+<msg time="2024-10-06T10:10:21.076983" level="INFO">${new_anecdote} = Any fool can write code that a computer can understand. Good programmers write code that humans can understand.</msg>
+<var>${new_anecdote}</var>
+<status status="PASS" start="2024-10-06T10:10:20.826074" elapsed="0.250909"/>
+</kw>
+<kw name="Get Current Vote Count" owner="Home">
+<kw name="Get Whole Text" owner="Home">
+<kw name="Get Text" owner="SeleniumLibrary">
+<msg time="2024-10-06T10:10:21.092620" level="INFO">${whole_text} = Anecdote of the day
+Any fool can write code that a computer can understand. Good programmers write code that humans can understand.
+has 0 votes
+votenext anecdote
+Anecdote with most votes
+The first 90 ...</msg>
+<var>${whole_text}</var>
+<arg>${ALL_TEXT}</arg>
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<status status="PASS" start="2024-10-06T10:10:21.076983" elapsed="0.015637"/>
+</kw>
+<return>
+<value>${whole_text}</value>
+<status status="PASS" start="2024-10-06T10:10:21.092620" elapsed="0.000000"/>
+</return>
+<msg time="2024-10-06T10:10:21.092620" level="INFO">${whole_text} = Anecdote of the day
+Any fool can write code that a computer can understand. Good programmers write code that humans can understand.
+has 0 votes
+votenext anecdote
+Anecdote with most votes
+The first 90 ...</msg>
+<var>${whole_text}</var>
+<status status="PASS" start="2024-10-06T10:10:21.076983" elapsed="0.015637"/>
+</kw>
+<kw name="Get Line" owner="String">
+<msg time="2024-10-06T10:10:21.092620" level="INFO">${3rd_line} = has 0 votes</msg>
+<var>${3rd_line}</var>
+<arg>${whole_text}</arg>
+<arg>2</arg>
+<doc>Returns the specified line from the given ``string``.</doc>
+<status status="PASS" start="2024-10-06T10:10:21.092620" elapsed="0.000000"/>
+</kw>
+<kw name="Remove String" owner="String">
+<msg time="2024-10-06T10:10:21.098728" level="INFO">${current_votes_count} =  0 votes</msg>
+<var>${current_votes_count}</var>
+<arg>${3rd_line}</arg>
+<arg>has</arg>
+<doc>Removes all ``removables`` from the given ``string``.</doc>
+<status status="PASS" start="2024-10-06T10:10:21.092620" elapsed="0.006108"/>
+</kw>
+<kw name="Remove String" owner="String">
+<msg time="2024-10-06T10:10:21.098728" level="INFO">${current_votes_count} =  0 </msg>
+<var>${current_votes_count}</var>
+<arg>${current_votes_count}</arg>
+<arg>votes</arg>
+<doc>Removes all ``removables`` from the given ``string``.</doc>
+<status status="PASS" start="2024-10-06T10:10:21.098728" elapsed="0.000000"/>
+</kw>
+<kw name="Convert To Integer" owner="BuiltIn">
+<msg time="2024-10-06T10:10:21.098728" level="INFO">${current_votes_count} = 0</msg>
+<var>${current_votes_count}</var>
+<arg>${current_votes_count}</arg>
+<doc>Converts the given item to an integer number.</doc>
+<status status="PASS" start="2024-10-06T10:10:21.098728" elapsed="0.000000"/>
+</kw>
+<return>
+<value>${current_votes_count}</value>
+<status status="PASS" start="2024-10-06T10:10:21.098728" elapsed="0.000000"/>
+</return>
+<msg time="2024-10-06T10:10:21.098728" level="INFO">${current_votes} = 0</msg>
+<var>${current_votes}</var>
+<status status="PASS" start="2024-10-06T10:10:21.076983" elapsed="0.021745"/>
+</kw>
+<if>
+<branch type="IF" condition="${current_votes} &lt; ${most_votes}">
+<if>
+<branch type="IF" condition="${current_votes} &gt; 0">
+<kw name="Get Current Anecdote" owner="Home">
+<var>${current_anecdote}</var>
+<status status="NOT RUN" start="2024-10-06T10:10:21.098728" elapsed="0.000000"/>
+</kw>
+<kw name="Dictionary Should Contain Key" owner="Collections">
+<arg>${DICT}</arg>
+<arg>${current_anecdote}</arg>
+<doc>Fails if ``key`` is not found from ``dictionary``.</doc>
+<status status="NOT RUN" start="2024-10-06T10:10:21.098728" elapsed="0.000000"/>
+</kw>
+<kw name="Get From Dictionary" owner="Collections">
+<var>${vote_from_dict}</var>
+<arg>${DICT}</arg>
+<arg>${current_anecdote}</arg>
+<doc>Returns a value from the given ``dictionary`` based on the given ``key``.</doc>
+<status status="NOT RUN" start="2024-10-06T10:10:21.098728" elapsed="0.000000"/>
+</kw>
+<kw name="Get Current Vote Count" owner="Home">
+<var>${current_votes}</var>
+<status status="NOT RUN" start="2024-10-06T10:10:21.098728" elapsed="0.000000"/>
+</kw>
+<kw name="Should Be Equal" owner="BuiltIn">
+<arg>${vote_from_dict}</arg>
+<arg>${current_votes}</arg>
+<doc>Fails if the given objects are unequal.</doc>
+<status status="NOT RUN" start="2024-10-06T10:10:21.098728" elapsed="0.000000"/>
+</kw>
+<break>
+<status status="NOT RUN" start="2024-10-06T10:10:21.098728" elapsed="0.000000"/>
+</break>
+<status status="NOT RUN" start="2024-10-06T10:10:21.098728" elapsed="0.000000"/>
+</branch>
+<branch type="ELSE">
+<kw name="Should Be Equal" owner="BuiltIn">
+<arg>${current_votes}</arg>
+<arg>${0}</arg>
+<doc>Fails if the given objects are unequal.</doc>
+<status status="PASS" start="2024-10-06T10:10:21.098728" elapsed="0.000000"/>
+</kw>
+<status status="PASS" start="2024-10-06T10:10:21.098728" elapsed="0.000000"/>
+</branch>
+<status status="PASS" start="2024-10-06T10:10:21.098728" elapsed="0.000000"/>
+</if>
+<status status="PASS" start="2024-10-06T10:10:21.098728" elapsed="0.000000"/>
+</branch>
+<status status="PASS" start="2024-10-06T10:10:21.098728" elapsed="0.000000"/>
+</if>
+<if>
+<branch type="IF" condition="${index} == ${99}">
+<kw name="Fail" owner="BuiltIn">
+<arg>The votes on a second most voted anecdote are not the same as was recorded in DICT</arg>
+<doc>Fails the test with the given message and optionally alters its tags.</doc>
+<status status="NOT RUN" start="2024-10-06T10:10:21.098728" elapsed="0.000000"/>
+</kw>
+<status status="NOT RUN" start="2024-10-06T10:10:21.098728" elapsed="0.000000"/>
+</branch>
+<status status="PASS" start="2024-10-06T10:10:21.098728" elapsed="0.000000"/>
+</if>
+<var name="${index}">0</var>
+<status status="PASS" start="2024-10-06T10:10:20.826074" elapsed="0.272654"/>
+</iter>
+<iter>
+<kw name="&quot;Next Anecdote&quot; functionality returns new anecdote" owner="AnecdotesApp">
+<kw name="Get Current Anecdote" owner="Home">
+<kw name="Get Whole Text" owner="Home">
+<kw name="Get Text" owner="SeleniumLibrary">
+<msg time="2024-10-06T10:10:21.108454" level="INFO">${whole_text} = Anecdote of the day
+Any fool can write code that a computer can understand. Good programmers write code that humans can understand.
+has 0 votes
+votenext anecdote
+Anecdote with most votes
+The first 90 ...</msg>
+<var>${whole_text}</var>
+<arg>${ALL_TEXT}</arg>
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<status status="PASS" start="2024-10-06T10:10:21.098728" elapsed="0.009726"/>
+</kw>
+<return>
+<value>${whole_text}</value>
+<status status="PASS" start="2024-10-06T10:10:21.108454" elapsed="0.000000"/>
+</return>
+<msg time="2024-10-06T10:10:21.108454" level="INFO">${whole_text} = Anecdote of the day
+Any fool can write code that a computer can understand. Good programmers write code that humans can understand.
+has 0 votes
+votenext anecdote
+Anecdote with most votes
+The first 90 ...</msg>
+<var>${whole_text}</var>
+<status status="PASS" start="2024-10-06T10:10:21.098728" elapsed="0.009726"/>
+</kw>
+<kw name="Get Line" owner="String">
+<msg time="2024-10-06T10:10:21.108454" level="INFO">${2nd_line} = Any fool can write code that a computer can understand. Good programmers write code that humans can understand.</msg>
+<var>${2nd_line}</var>
+<arg>${whole_text}</arg>
+<arg>1</arg>
+<doc>Returns the specified line from the given ``string``.</doc>
+<status status="PASS" start="2024-10-06T10:10:21.108454" elapsed="0.000000"/>
+</kw>
+<return>
+<value>${2nd_line}</value>
+<status status="PASS" start="2024-10-06T10:10:21.108454" elapsed="0.000000"/>
+</return>
+<msg time="2024-10-06T10:10:21.108454" level="INFO">${old_anecdote} = Any fool can write code that a computer can understand. Good programmers write code that humans can understand.</msg>
+<var>${old_anecdote}</var>
+<status status="PASS" start="2024-10-06T10:10:21.098728" elapsed="0.009726"/>
+</kw>
+<for flavor="IN RANGE">
+<iter>
+<kw name="Get New Anecdote" owner="Home">
+<kw name="Click Button" owner="SeleniumLibrary">
+<msg time="2024-10-06T10:10:21.108454" level="INFO">Clicking button '//div[@id="root"]/div/div[2]/button[2]'.</msg>
+<arg>//div[@id="root"]/div/div[2]/button[2]</arg>
+<doc>Clicks the button identified by ``locator``.</doc>
+<status status="PASS" start="2024-10-06T10:10:21.108454" elapsed="0.220238"/>
+</kw>
+<status status="PASS" start="2024-10-06T10:10:21.108454" elapsed="0.220238"/>
+</kw>
+<kw name="Get Current Anecdote" owner="Home">
+<kw name="Get Whole Text" owner="Home">
+<kw name="Get Text" owner="SeleniumLibrary">
+<msg time="2024-10-06T10:10:21.328692" level="INFO">${whole_text} = Anecdote of the day
+If it hurts, do it more often.
+has 5 votes
+votenext anecdote
+Anecdote with most votes
+The first 90 percent of the code accounts for the first 90 percent of the development time...T...</msg>
+<var>${whole_text}</var>
+<arg>${ALL_TEXT}</arg>
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<status status="PASS" start="2024-10-06T10:10:21.328692" elapsed="0.000000"/>
+</kw>
+<return>
+<value>${whole_text}</value>
+<status status="PASS" start="2024-10-06T10:10:21.328692" elapsed="0.000000"/>
+</return>
+<msg time="2024-10-06T10:10:21.328692" level="INFO">${whole_text} = Anecdote of the day
+If it hurts, do it more often.
+has 5 votes
+votenext anecdote
+Anecdote with most votes
+The first 90 percent of the code accounts for the first 90 percent of the development time...T...</msg>
+<var>${whole_text}</var>
+<status status="PASS" start="2024-10-06T10:10:21.328692" elapsed="0.000000"/>
+</kw>
+<kw name="Get Line" owner="String">
+<msg time="2024-10-06T10:10:21.328692" level="INFO">${2nd_line} = If it hurts, do it more often.</msg>
+<var>${2nd_line}</var>
+<arg>${whole_text}</arg>
+<arg>1</arg>
+<doc>Returns the specified line from the given ``string``.</doc>
+<status status="PASS" start="2024-10-06T10:10:21.328692" elapsed="0.000000"/>
+</kw>
+<return>
+<value>${2nd_line}</value>
+<status status="PASS" start="2024-10-06T10:10:21.328692" elapsed="0.000000"/>
+</return>
+<msg time="2024-10-06T10:10:21.328692" level="INFO">${new_anecdote} = If it hurts, do it more often.</msg>
+<var>${new_anecdote}</var>
+<status status="PASS" start="2024-10-06T10:10:21.328692" elapsed="0.000000"/>
+</kw>
+<if>
+<branch type="IF" condition="'$old_anecdote' != '$new_anecdote'">
+<return>
+<value>${new_anecdote}</value>
+<status status="PASS" start="2024-10-06T10:10:21.328692" elapsed="0.000000"/>
+</return>
+<status status="PASS" start="2024-10-06T10:10:21.328692" elapsed="0.000000"/>
+</branch>
+<status status="PASS" start="2024-10-06T10:10:21.328692" elapsed="0.000000"/>
+</if>
+<var name="${index}">0</var>
+<status status="PASS" start="2024-10-06T10:10:21.108454" elapsed="0.220238"/>
+</iter>
+<var>${index}</var>
+<value>${TRIES}</value>
+<status status="PASS" start="2024-10-06T10:10:21.108454" elapsed="0.220238"/>
+</for>
+<kw name="Fail" owner="BuiltIn">
+<arg>The anecdote was not changed</arg>
+<doc>Fails the test with the given message and optionally alters its tags.</doc>
+<status status="NOT RUN" start="2024-10-06T10:10:21.328692" elapsed="0.000000"/>
+</kw>
+<msg time="2024-10-06T10:10:21.328692" level="INFO">${new_anecdote} = If it hurts, do it more often.</msg>
+<var>${new_anecdote}</var>
+<status status="PASS" start="2024-10-06T10:10:21.098728" elapsed="0.229964"/>
+</kw>
+<kw name="Get Current Vote Count" owner="Home">
+<kw name="Get Whole Text" owner="Home">
+<kw name="Get Text" owner="SeleniumLibrary">
+<msg time="2024-10-06T10:10:21.344101" level="INFO">${whole_text} = Anecdote of the day
+If it hurts, do it more often.
+has 5 votes
+votenext anecdote
+Anecdote with most votes
+The first 90 percent of the code accounts for the first 90 percent of the development time...T...</msg>
+<var>${whole_text}</var>
+<arg>${ALL_TEXT}</arg>
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<status status="PASS" start="2024-10-06T10:10:21.328692" elapsed="0.015409"/>
+</kw>
+<return>
+<value>${whole_text}</value>
+<status status="PASS" start="2024-10-06T10:10:21.344101" elapsed="0.000000"/>
+</return>
+<msg time="2024-10-06T10:10:21.344101" level="INFO">${whole_text} = Anecdote of the day
+If it hurts, do it more often.
+has 5 votes
+votenext anecdote
+Anecdote with most votes
+The first 90 percent of the code accounts for the first 90 percent of the development time...T...</msg>
+<var>${whole_text}</var>
+<status status="PASS" start="2024-10-06T10:10:21.328692" elapsed="0.015409"/>
+</kw>
+<kw name="Get Line" owner="String">
+<msg time="2024-10-06T10:10:21.344101" level="INFO">${3rd_line} = has 5 votes</msg>
+<var>${3rd_line}</var>
+<arg>${whole_text}</arg>
+<arg>2</arg>
+<doc>Returns the specified line from the given ``string``.</doc>
+<status status="PASS" start="2024-10-06T10:10:21.344101" elapsed="0.000000"/>
+</kw>
+<kw name="Remove String" owner="String">
+<msg time="2024-10-06T10:10:21.344101" level="INFO">${current_votes_count} =  5 votes</msg>
+<var>${current_votes_count}</var>
+<arg>${3rd_line}</arg>
+<arg>has</arg>
+<doc>Removes all ``removables`` from the given ``string``.</doc>
+<status status="PASS" start="2024-10-06T10:10:21.344101" elapsed="0.000000"/>
+</kw>
+<kw name="Remove String" owner="String">
+<msg time="2024-10-06T10:10:21.344101" level="INFO">${current_votes_count} =  5 </msg>
+<var>${current_votes_count}</var>
+<arg>${current_votes_count}</arg>
+<arg>votes</arg>
+<doc>Removes all ``removables`` from the given ``string``.</doc>
+<status status="PASS" start="2024-10-06T10:10:21.344101" elapsed="0.000000"/>
+</kw>
+<kw name="Convert To Integer" owner="BuiltIn">
+<msg time="2024-10-06T10:10:21.344101" level="INFO">${current_votes_count} = 5</msg>
+<var>${current_votes_count}</var>
+<arg>${current_votes_count}</arg>
+<doc>Converts the given item to an integer number.</doc>
+<status status="PASS" start="2024-10-06T10:10:21.344101" elapsed="0.000000"/>
+</kw>
+<return>
+<value>${current_votes_count}</value>
+<status status="PASS" start="2024-10-06T10:10:21.344101" elapsed="0.000000"/>
+</return>
+<msg time="2024-10-06T10:10:21.344101" level="INFO">${current_votes} = 5</msg>
+<var>${current_votes}</var>
+<status status="PASS" start="2024-10-06T10:10:21.328692" elapsed="0.015409"/>
+</kw>
+<if>
+<branch type="IF" condition="${current_votes} &lt; ${most_votes}">
+<if>
+<branch type="IF" condition="${current_votes} &gt; 0">
+<kw name="Get Current Anecdote" owner="Home">
+<kw name="Get Whole Text" owner="Home">
+<kw name="Get Text" owner="SeleniumLibrary">
+<msg time="2024-10-06T10:10:21.344101" level="INFO">${whole_text} = Anecdote of the day
+If it hurts, do it more often.
+has 5 votes
+votenext anecdote
+Anecdote with most votes
+The first 90 percent of the code accounts for the first 90 percent of the development time...T...</msg>
+<var>${whole_text}</var>
+<arg>${ALL_TEXT}</arg>
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<status status="PASS" start="2024-10-06T10:10:21.344101" elapsed="0.000000"/>
+</kw>
+<return>
+<value>${whole_text}</value>
+<status status="PASS" start="2024-10-06T10:10:21.344101" elapsed="0.000000"/>
+</return>
+<msg time="2024-10-06T10:10:21.344101" level="INFO">${whole_text} = Anecdote of the day
+If it hurts, do it more often.
+has 5 votes
+votenext anecdote
+Anecdote with most votes
+The first 90 percent of the code accounts for the first 90 percent of the development time...T...</msg>
+<var>${whole_text}</var>
+<status status="PASS" start="2024-10-06T10:10:21.344101" elapsed="0.000000"/>
+</kw>
+<kw name="Get Line" owner="String">
+<msg time="2024-10-06T10:10:21.344101" level="INFO">${2nd_line} = If it hurts, do it more often.</msg>
+<var>${2nd_line}</var>
+<arg>${whole_text}</arg>
+<arg>1</arg>
+<doc>Returns the specified line from the given ``string``.</doc>
+<status status="PASS" start="2024-10-06T10:10:21.344101" elapsed="0.000000"/>
+</kw>
+<return>
+<value>${2nd_line}</value>
+<status status="PASS" start="2024-10-06T10:10:21.344101" elapsed="0.000000"/>
+</return>
+<msg time="2024-10-06T10:10:21.344101" level="INFO">${current_anecdote} = If it hurts, do it more often.</msg>
+<var>${current_anecdote}</var>
+<status status="PASS" start="2024-10-06T10:10:21.344101" elapsed="0.000000"/>
+</kw>
+<kw name="Dictionary Should Contain Key" owner="Collections">
+<arg>${DICT}</arg>
+<arg>${current_anecdote}</arg>
+<doc>Fails if ``key`` is not found from ``dictionary``.</doc>
+<status status="PASS" start="2024-10-06T10:10:21.344101" elapsed="0.000000"/>
+</kw>
+<kw name="Get From Dictionary" owner="Collections">
+<msg time="2024-10-06T10:10:21.344101" level="INFO">${vote_from_dict} = 5</msg>
+<var>${vote_from_dict}</var>
+<arg>${DICT}</arg>
+<arg>${current_anecdote}</arg>
+<doc>Returns a value from the given ``dictionary`` based on the given ``key``.</doc>
+<status status="PASS" start="2024-10-06T10:10:21.344101" elapsed="0.000000"/>
+</kw>
+<kw name="Get Current Vote Count" owner="Home">
+<kw name="Get Whole Text" owner="Home">
+<kw name="Get Text" owner="SeleniumLibrary">
+<msg time="2024-10-06T10:10:21.359824" level="INFO">${whole_text} = Anecdote of the day
+If it hurts, do it more often.
+has 5 votes
+votenext anecdote
+Anecdote with most votes
+The first 90 percent of the code accounts for the first 90 percent of the development time...T...</msg>
+<var>${whole_text}</var>
+<arg>${ALL_TEXT}</arg>
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<status status="PASS" start="2024-10-06T10:10:21.344101" elapsed="0.015723"/>
+</kw>
+<return>
+<value>${whole_text}</value>
+<status status="PASS" start="2024-10-06T10:10:21.359824" elapsed="0.000000"/>
+</return>
+<msg time="2024-10-06T10:10:21.359824" level="INFO">${whole_text} = Anecdote of the day
+If it hurts, do it more often.
+has 5 votes
+votenext anecdote
+Anecdote with most votes
+The first 90 percent of the code accounts for the first 90 percent of the development time...T...</msg>
+<var>${whole_text}</var>
+<status status="PASS" start="2024-10-06T10:10:21.344101" elapsed="0.015723"/>
+</kw>
+<kw name="Get Line" owner="String">
+<msg time="2024-10-06T10:10:21.359824" level="INFO">${3rd_line} = has 5 votes</msg>
+<var>${3rd_line}</var>
+<arg>${whole_text}</arg>
+<arg>2</arg>
+<doc>Returns the specified line from the given ``string``.</doc>
+<status status="PASS" start="2024-10-06T10:10:21.359824" elapsed="0.000000"/>
+</kw>
+<kw name="Remove String" owner="String">
+<msg time="2024-10-06T10:10:21.359824" level="INFO">${current_votes_count} =  5 votes</msg>
+<var>${current_votes_count}</var>
+<arg>${3rd_line}</arg>
+<arg>has</arg>
+<doc>Removes all ``removables`` from the given ``string``.</doc>
+<status status="PASS" start="2024-10-06T10:10:21.359824" elapsed="0.000000"/>
+</kw>
+<kw name="Remove String" owner="String">
+<msg time="2024-10-06T10:10:21.359824" level="INFO">${current_votes_count} =  5 </msg>
+<var>${current_votes_count}</var>
+<arg>${current_votes_count}</arg>
+<arg>votes</arg>
+<doc>Removes all ``removables`` from the given ``string``.</doc>
+<status status="PASS" start="2024-10-06T10:10:21.359824" elapsed="0.000000"/>
+</kw>
+<kw name="Convert To Integer" owner="BuiltIn">
+<msg time="2024-10-06T10:10:21.359824" level="INFO">${current_votes_count} = 5</msg>
+<var>${current_votes_count}</var>
+<arg>${current_votes_count}</arg>
+<doc>Converts the given item to an integer number.</doc>
+<status status="PASS" start="2024-10-06T10:10:21.359824" elapsed="0.000000"/>
+</kw>
+<return>
+<value>${current_votes_count}</value>
+<status status="PASS" start="2024-10-06T10:10:21.359824" elapsed="0.000000"/>
+</return>
+<msg time="2024-10-06T10:10:21.359824" level="INFO">${current_votes} = 5</msg>
+<var>${current_votes}</var>
+<status status="PASS" start="2024-10-06T10:10:21.344101" elapsed="0.015723"/>
+</kw>
+<kw name="Should Be Equal" owner="BuiltIn">
+<arg>${vote_from_dict}</arg>
+<arg>${current_votes}</arg>
+<doc>Fails if the given objects are unequal.</doc>
+<status status="PASS" start="2024-10-06T10:10:21.359824" elapsed="0.000000"/>
+</kw>
+<break>
+<status status="PASS" start="2024-10-06T10:10:21.359824" elapsed="0.000000"/>
+</break>
+<status status="PASS" start="2024-10-06T10:10:21.344101" elapsed="0.015723"/>
+</branch>
+<branch type="ELSE">
+<kw name="Should Be Equal" owner="BuiltIn">
+<arg>${current_votes}</arg>
+<arg>${0}</arg>
+<doc>Fails if the given objects are unequal.</doc>
+<status status="NOT RUN" start="2024-10-06T10:10:21.359824" elapsed="0.000000"/>
+</kw>
+<status status="NOT RUN" start="2024-10-06T10:10:21.359824" elapsed="0.000000"/>
+</branch>
+<status status="PASS" start="2024-10-06T10:10:21.344101" elapsed="0.015723"/>
+</if>
+<status status="PASS" start="2024-10-06T10:10:21.344101" elapsed="0.015723"/>
+</branch>
+<status status="PASS" start="2024-10-06T10:10:21.344101" elapsed="0.015723"/>
+</if>
+<if>
+<branch type="IF" condition="${index} == ${99}">
+<kw name="Fail" owner="BuiltIn">
+<arg>The votes on a second most voted anecdote are not the same as was recorded in DICT</arg>
+<doc>Fails the test with the given message and optionally alters its tags.</doc>
+<status status="NOT RUN" start="2024-10-06T10:10:21.359824" elapsed="0.000000"/>
+</kw>
+<status status="NOT RUN" start="2024-10-06T10:10:21.359824" elapsed="0.000000"/>
+</branch>
+<status status="NOT RUN" start="2024-10-06T10:10:21.359824" elapsed="0.000000"/>
+</if>
+<var name="${index}">1</var>
+<status status="PASS" start="2024-10-06T10:10:21.098728" elapsed="0.261096"/>
+</iter>
+<var>${index}</var>
+<value>100</value>
+<status status="PASS" start="2024-10-06T10:10:20.826074" elapsed="0.533750"/>
+</for>
+<status status="PASS" start="2024-10-06T10:10:20.826074" elapsed="0.533750"/>
+</kw>
+<kw name="End Test" owner="common" type="TEARDOWN">
+<kw name="Close All Browsers" owner="SeleniumLibrary">
+<doc>Closes all open browsers and resets the browser cache.</doc>
+<status status="PASS" start="2024-10-06T10:10:21.359824" elapsed="6.637234"/>
+</kw>
+<status status="PASS" start="2024-10-06T10:10:21.359824" elapsed="6.637234"/>
+</kw>
+<status status="PASS" start="2024-10-06T10:10:11.004925" elapsed="16.992133"/>
+</test>
+<status status="PASS" start="2024-10-06T10:09:43.011841" elapsed="44.985217"/>
+</suite>
+<statistics>
+<total>
+<stat pass="3" fail="0" skip="0">All Tests</stat>
+</total>
+<tag>
+</tag>
+<suite>
+<stat pass="3" fail="0" skip="0" id="s1" name="Anecdotes">Anecdotes</stat>
+</suite>
+</statistics>
+<errors>
+</errors>
+</robot>
