@@ -6,6 +6,7 @@ class HomeView(BaseView):
     all_text = (By.XPATH, f'//div[@id="root"]')
     voted_count_text = (By.XPATH, '//div[@id="root"]/div/div[3]/div')
     voted_anecdote = (By.XPATH, '//div[@id="root"]/div/div[3]')
+    buttons = (By.TAG_NAME, 'button')
     url = 'http://localhost:5173/'
     votes = {}
 
@@ -14,10 +15,10 @@ class HomeView(BaseView):
         return self.wait_for_presence(self.app_header).text
 
     def select_new_anecdote(self) -> None:
-        self.find_multiple((By.TAG_NAME, 'button'))[1].click()
+        self.find_multiple(self.buttons)[1].click()
 
     def vote_anecdote(self) -> None:
-        self.find_multiple((By.TAG_NAME, 'button'))[0].click()
+        self.find_multiple(self.buttons)[0].click()
         key = self.get_current_anecdote()
         if key not in self.votes:
             self.votes[key] = 1
