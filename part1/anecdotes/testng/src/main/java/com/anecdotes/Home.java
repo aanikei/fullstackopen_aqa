@@ -1,17 +1,16 @@
 package com.anecdotes;
 
 import java.util.HashMap;
-import java.util.List;
 
 import org.openqa.selenium.By;
-import org.openqa.selenium.WebElement;
 
 public class Home extends Base {
   private By appHeader = By.xpath("//div[@id='root']/div/h2");
   private By votedCountText = By.xpath("//div[@id='root']/div/div[3]/div");
   private By votedAnecdote = By.xpath("//div[@id='root']/div/div[3]");
   private By allText = By.xpath("//div[@id='root']");
-  private By allButtons = By.tagName("button");
+  private By voteButton = By.xpath("//button[text()=\"vote\"]");
+  private By nextButton = By.xpath("//button[text()=\"next anecdote\"]");
 
   private HashMap <String, Integer> hMap = new HashMap<>();
 
@@ -34,13 +33,11 @@ public class Home extends Base {
   }
 
   public void selectNewAnecdote() {
-    List<WebElement> buttons = findMultiple(allButtons);
-    buttons.get(1).click();
+    find(nextButton).click();
   }
 
   public void voteCurrentAnecdote() {
-    List<WebElement> buttons = findMultiple(allButtons);
-    buttons.get(0).click();
+    find(voteButton).click();
     Integer value = hMap.get(getCurrentAnecdote());
     if (null != value) {
       hMap.put(getCurrentAnecdote(), ++value);

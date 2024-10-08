@@ -1,7 +1,6 @@
 package com.anecdotes;
 
 import java.time.Duration;
-import java.util.List;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
@@ -24,9 +23,5 @@ public class Base {
 
   public WebElement find(By locator) {
     return driver.findElement(locator);
-  }
-
-  public List<WebElement> findMultiple(By locator) {
-    return driver.findElements(locator);
   }
 }
