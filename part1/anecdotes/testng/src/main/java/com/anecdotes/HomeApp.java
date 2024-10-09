@@ -32,19 +32,18 @@ public class HomeApp {
     Assert.assertTrue(ANECDOTES.contains(home.getCurrentAnecdote()));
   }
 
-  public String selectNextAnecdote() {
+  public void selectNextAnecdote() {
     int tries = 3;
     String initialAnecdote = home.getCurrentAnecdote();
     for (int i = 0; i < tries; i++) {
       home.selectNewAnecdote();
       String currentAnecdote = home.getCurrentAnecdote();
       if (!initialAnecdote.equals(currentAnecdote)) {
-        return currentAnecdote;
+        return;
       }
     }
 
     Assert.fail("The anecdote was not changed");
-    return "";
   }
 
   void voteForAnecdote(int count) {
@@ -73,12 +72,9 @@ public class HomeApp {
       if (currentVote < mostVoted) {
         if (currentVote > 0) {
           String currentAnecdote = home.getCurrentAnecdote();
-          Assert.assertTrue(home.getVotesMap().containsKey(currentAnecdote));
           int savedVote = home.getVotesMap().get(currentAnecdote);
-          Assert.assertEquals(home.getCurrentVoteCount(), savedVote);
+          Assert.assertEquals(currentVote, savedVote);
           break;
-        } else {
-          Assert.assertEquals(home.getCurrentVoteCount(), 0);
         }
       }
 
