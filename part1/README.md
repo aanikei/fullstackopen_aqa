@@ -4,9 +4,9 @@ Part 1, apps: Anecdotes.
 
 Tools: Selenium.
 
-Frameworks: Robot Framework, pytest.
+Frameworks: Robot Framework, pytest, TestNG, Playwright.
 
-Languages: Python.
+Languages: Python, Java, JavaScript.
 
 Test cases for Anecdotes app:
 | ID | Description | Data | Steps | Expected Result |
