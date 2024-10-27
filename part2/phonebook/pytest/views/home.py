@@ -26,13 +26,13 @@ class HomeView(BaseView):
 		self.find(self.number_input).send_keys(phone)
 		self.find(self.add_button).click()
 
-	def get_success_message(self):
+	def get_success_message(self) -> str:
 		return self.find(self.success_message).text
 	
-	def refresh_page(self):
+	def refresh_page(self) -> None:
 		self.driver.refresh()
 		
-	def handle_duplicate_alert(self):
+	def handle_duplicate_alert(self) -> str:
 		alert = self.get_alert()
 		alert_text = alert.text
 		alert.accept()
@@ -47,12 +47,27 @@ class HomeView(BaseView):
 			alert.dismiss()
 
 	def filter_entries(self, s: str):
-		input_text_field = self.find(self.filter_input)
-		input_text_field.send_keys(Keys.CONTROL + "a")
-		input_text_field.send_keys(Keys.DELETE)
+		self.clear_entry_form()
 
 		if s:
 			self.find(self.filter_input).send_keys(s)
 			
 		time.sleep(0.1)
 		return [i.text.removesuffix('delete') for i in self.get_entries()]
+
+	def update_entry(self, name: str, phone: str, confirm: bool):
+		self.refresh_page()
+		self.find(self.name_input).send_keys(name)
+		self.find(self.number_input).send_keys(phone)
+		self.find(self.add_button).click()
+
+		alert = self.get_alert()
+		if confirm:
+			alert.accept()
+		else:
+			alert.dismiss()
+
+	def clear_entry_form(self):
+		input_text_field = self.find(self.filter_input)
+		input_text_field.send_keys(Keys.CONTROL + "a")
+		input_text_field.send_keys(Keys.DELETE)

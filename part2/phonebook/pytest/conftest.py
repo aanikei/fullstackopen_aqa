@@ -14,10 +14,19 @@ def home(driver):
     return HomeView(driver)
 
 @pytest.fixture
-def db_entries() -> list:
-	entries = []
+def db_entries_raw():
 	with open('../db.json', 'r') as db:
 		data = json.load(db)
-		for e in data['persons']:
-			entries.append(f'{e['name']} {e['number']}')
+		return data
+
+@pytest.fixture
+def db_entries(db_entries_raw) -> list:
+	entries = []
+	data = db_entries_raw
+	for e in data['persons']:
+		entries.append(f'{e['name']} {e['number']}')
+	
 	return entries
+
+class IdStorage:
+    id = None
