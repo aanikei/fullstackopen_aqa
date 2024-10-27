@@ -1,0 +1,109 @@
+openapi: 3.0.3
+info:
+  title: The Phonebook
+  version: 0.0.1
+servers:
+- url: http://localhost:3001/
+tags:
+  - name: persons
+    description: entries containing names and numbers
+paths:
+  /persons:
+    get:
+      tags:
+        - persons
+      summary: Get list of persons
+      description: Get list of all persons
+      operationId: getAll
+      responses:
+        '200':
+          description: Successful operation
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Person'
+                  
+    post:
+      tags:
+        - persons
+      summary: Create new person
+      description: Create new person
+      operationId: create
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Person'
+      responses:
+        '201':
+          description: Successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Person'
+                
+  /persons/{id}:
+    put:
+      tags:
+        - persons
+      summary: Update person
+      description: Update phone of person, present in database
+      operationId: update
+      parameters:
+        - name: id
+          in: path
+          description: ID of person to update
+          required: true
+          schema:
+            type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Person'
+      responses:
+        '200':
+          description: Successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Person'
+                
+    delete:
+      tags:
+        - persons
+      summary: Delete person
+      description: Delete person from database
+      operationId: deleteName
+      parameters:
+        - name: id
+          in: path
+          description: ID of person to delete
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Person'
+                
+components:
+  schemas:
+    Person:
+      type: object
+      properties:
+        id:
+          type: string
+          default: null
+          example: abcd
+        name:
+          type: string
+          example: Test Name
+        number:
+          type: string
+          example: 0123-4567
