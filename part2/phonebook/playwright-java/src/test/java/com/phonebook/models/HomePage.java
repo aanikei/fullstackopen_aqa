@@ -151,6 +151,7 @@ public class HomePage {
     addButton.click();
   }
 
+  //https://stackoverflow.com/questions/442747/getting-the-name-of-the-currently-executing-method
   private String getCurrentMethodName() {
     String funcName = StackWalker.getInstance()
                       .walk(s -> s.skip(1).findFirst())
