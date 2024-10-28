@@ -1,0 +1,268 @@
+{
+	"info": {
+		"_postman_id": "631f2f4a-907b-43ab-bc3e-3007cd45ac82",
+		"name": "Persons: CRUD",
+		"description": "Testing /persons endpoint for The Phonebook app",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "35013618"
+	},
+	"item": [
+		{
+			"name": "Get data",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", () => {",
+							"    pm.response.to.have.status(200)",
+							"})",
+							"",
+							"pm.test(\"Initial number of records is 4\", () => {",
+							"    const responseJson = pm.response.json()",
+							"    pm.expect(responseJson).to.be.an('array')",
+							"    pm.expect(responseJson).to.have.lengthOf(4)",
+							"})"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				},
+				{
+					"listen": "prerequest",
+					"script": {
+						"packages": {},
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{base_url}}",
+					"host": [
+						"{{base_url}}"
+					]
+				},
+				"description": "This is a GET request and it is used to \"get\" data from an endpoint."
+			},
+			"response": []
+		},
+		{
+			"name": "Post data",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Successful POST request\", () => {",
+							"    pm.response.to.have.status(201)",
+							"})",
+							"",
+							"pm.test(\"Responce data is correct\", () => {",
+							"    const entry = JSON.parse(pm.collectionVariables.get('entry'))",
+							"    const responseJson = pm.response.json()",
+							"    pm.expect(responseJson['name']).to.be.equal(entry['name'])",
+							"    pm.expect(responseJson['phone']).to.be.equal(entry['phone'])",
+							"    const id = responseJson['id']",
+							"    pm.collectionVariables.set(",
+							"        'newEntryId', id",
+							"    )",
+							"})"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				},
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							"// const newEntry = { \r",
+							"//     'name': '{{$randomFullName}}', \r",
+							"//     'phone': '{{$randomPhoneNumber}}' \r",
+							"// }\r",
+							"\r",
+							"const newEntry = { \r",
+							"    'name': 'Test User1', \r",
+							"    'phone': '0123456' \r",
+							"}\r",
+							"\r",
+							"pm.collectionVariables.set(\r",
+							"    'entry', JSON.stringify(newEntry)\r",
+							")"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{{entry}}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{base_url}}",
+					"host": [
+						"{{base_url}}"
+					]
+				},
+				"description": "This is a POST request, submitting data to an API via the request body. This request submits JSON data."
+			},
+			"response": []
+		},
+		{
+			"name": "Update data",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Successful PUT request\", () => {",
+							"    pm.response.to.have.status(200)",
+							"})",
+							"",
+							"pm.test(\"Responce data is correct\", () => {",
+							"    const entry = JSON.parse(pm.collectionVariables.get('entry'))",
+							"    const responseJson = pm.response.json()",
+							"    pm.expect(responseJson['name']).to.be.equal(entry['name'])",
+							"    pm.expect(responseJson['phone']).to.be.equal(entry['phone'])",
+							"})"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				},
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							"const newEntry = JSON.parse(pm.collectionVariables.get('entry'))\r",
+							"const updatedEntry = {...newEntry, phone: '0987654'}\r",
+							"pm.collectionVariables.set('entry', JSON.stringify(updatedEntry))"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{{entry}}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{base_url}}/{{newEntryId}}",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"{{newEntryId}}"
+					]
+				},
+				"description": "This is a PUT request and it is used to overwrite an existing piece of data."
+			},
+			"response": []
+		},
+		{
+			"name": "Delete data",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Successful DELETE request\", () => {",
+							"    pm.response.to.have.status(200)",
+							"})",
+							"",
+							"pm.test(\"Responce data is correct\", () => {",
+							"    const entry = JSON.parse(pm.collectionVariables.get('entry'))",
+							"    const responseJson = pm.response.json()",
+							"    pm.expect(responseJson['name']).to.be.equal(entry['name'])",
+							"    pm.expect(responseJson['phone']).to.be.equal(entry['phone'])",
+							"    const newEntryId = pm.collectionVariables.get('newEntryId')",
+							"    pm.expect(responseJson['id']).to.be.equal(newEntryId)",
+							"})"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{base_url}}/{{newEntryId}}",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"{{newEntryId}}"
+					]
+				},
+				"description": "This is a DELETE request, and it is used to delete data that was previously created via a PUT request."
+			},
+			"response": []
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "base_url",
+			"value": "http://localhost:3001/persons"
+		},
+		{
+			"key": "entry",
+			"value": ""
+		},
+		{
+			"key": "newEntryId",
+			"value": ""
+		}
+	]
+}
