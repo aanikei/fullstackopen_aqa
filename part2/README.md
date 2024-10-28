@@ -2,7 +2,7 @@
 
 Part 1, apps: The Phonebook.
 
-Tools: Selenium, REST Assured.
+Tools: Selenium, REST Assured, Postman.
 
 Frameworks: pytest, requests, Playwright for Java, JUnit.
 
