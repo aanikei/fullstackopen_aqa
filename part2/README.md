@@ -4,9 +4,9 @@ Part 2, apps: The Phonebook.
 
 Tools: Selenium, REST Assured, Postman.
 
-Frameworks: pytest, requests, Playwright for Java, JUnit.
+Frameworks: pytest, requests, Playwright for Java, JUnit, Playwright, TestNG.
 
-Languages: Python, Java.
+Languages: python, Java, JavaScript.
 
 Test cases for The Phonebook API:
 | ID | Description | Data | Steps | Expected Result |
