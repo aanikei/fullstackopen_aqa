@@ -1,7 +1,5 @@
 package org.testng;
 
-import org.junit.jupiter.api.DisplayName;
-import org.junit.jupiter.api.Order;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.testng.annotations.AfterTest;
@@ -43,8 +41,6 @@ public class HomeTest {
   }
 
   @Test
-  @Order(1)
-  @DisplayName("Verify entries")
   @Description("Verification that the displayed entries are the same as in data base")
   @Severity(SeverityLevel.CRITICAL)
   public void testEntriesAreCorrect() {
@@ -53,8 +49,6 @@ public class HomeTest {
   }
 
   @Test(dataProvider = "testData")
-  @Order(2)
-  @DisplayName("Verify add and delete functionality")
   @Description("Verification that the new entries can be added and deleted")
   @Severity(SeverityLevel.NORMAL)
   @Feature("Add entry")
@@ -69,15 +63,13 @@ public class HomeTest {
     hv.verifyUpdate(false); //cancel update
     hv.verifyUpdate(true);
     hv.verifyNotification("Updated");
+    hv.verifyEntryPresentAfterRefresh(true);
+    hv.verifyDelete(false); //cancel deletion
+    hv.verifyDelete(true);
     hv.verifyEntryPresentAfterRefresh(false);
-    // hv.verifyDelete(false); //cancel deletion
-    // hv.verifyDelete(true);
-    // hv.verifyEntryPresentAfterRefresh(false);
   }
 
   @Test(dataProvider = "testData")
-  @Order(3)
-  @DisplayName("Verify filter functionality")
   @Description("Verification that the filter works as expected")
   @Feature("Filter")
   @Severity(SeverityLevel.NORMAL)
@@ -98,7 +90,7 @@ public class HomeTest {
   public Object[][] createData() {
     return new Object[][] {
       { "Danny", "1234567" },
-      //{ "Dante", "0987654"}
+      { "Dante", "0987654"}
     };
   }
 }

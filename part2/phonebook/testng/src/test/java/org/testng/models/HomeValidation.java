@@ -1,7 +1,9 @@
 package org.testng.models;
 
 import java.time.Duration;
+import java.util.List;
 import java.util.concurrent.Callable;
+import java.util.stream.Collectors;
 
 import org.awaitility.Awaitility;
 import org.openqa.selenium.Alert;
@@ -25,19 +27,19 @@ public class HomeValidation {
   }
 
   public void verifyPageLoaded() {
-    Allure.step(getCurrentMethodName(), step -> {
+    Allure.step(getCurrentMethodName(), _ -> {
       Assert.assertEquals(home.getAppHeader(), "Phonebook");
     });
   }
 
   public void verifyAllEntriesLoaded() {
-    Allure.step(getCurrentMethodName(), step -> {
+    Allure.step(getCurrentMethodName(), _ -> {
       Assert.assertEquals(home.getPhonebookEntriesText(), DataClass.getEntriesFromDB());
     });
   }
 
   public void verifyNewEntryAdded() {
-    Allure.step(getCurrentMethodName(), step -> {
+    Allure.step(getCurrentMethodName(), _ -> {
       home.addNewEntry(name, number);
       Assert.assertListContains(home.getPhonebookEntriesText(), 
                                 i -> i.equals(name + " " + number), 
@@ -46,7 +48,7 @@ public class HomeValidation {
   }
 
   public void verifyNotification(String action) {
-    Allure.step(getCurrentMethodName(), step -> {
+    Allure.step(getCurrentMethodName(), _ -> {
       Assert.assertEquals(home.getSuccessMessage(), action + " '" + name + "'");
       Callable<Boolean> wait = () -> home.getSuccessMessage() == null;
       Awaitility.waitAtMost(Duration.ofSeconds(6)).pollDelay(Duration.ofMillis(500)).until(wait); 
@@ -54,7 +56,7 @@ public class HomeValidation {
   }
 
   public void verifyEntryPresentAfterRefresh(boolean present) {
-    Allure.step(getCurrentMethodName(), step -> {
+    Allure.step(getCurrentMethodName(), _ -> {
       Home.driver.navigate().refresh();
       if (present) {
         Assert.assertListContains(home.getPhonebookEntriesText(), 
@@ -69,36 +71,36 @@ public class HomeValidation {
   }
 
   public void verifyDuplicateNotInserted() {
-    Allure.step(getCurrentMethodName(), step -> {
+    Allure.step(getCurrentMethodName(), _ -> {
       home.addNewEntry(name, number);
-      Alert alert = home.getAlert();
-      Assert.assertEquals(alert.getText(), name + " is already added to phonebook!");
-      alert.accept();
+      handleAlert(true, name + " is already added to phonebook!");
     });
   }
 
   public void verifyUpdate(boolean confirm) {
-    Allure.step(getCurrentMethodName(), step -> {
+    Allure.step(getCurrentMethodName(), _ -> {
       number = newNumber;
       home.clearNewEntryForm();
       home.addNewEntry(name, number);
-      Alert alert = home.getAlert();
-      Assert.assertEquals(alert.getText(), name + " is already added to the phonebook, replate the ole number with a new one?");
-      if (confirm) {
-        alert.accept();;
-      } else {
-        alert.dismiss();
-      }
+      handleAlert(confirm, name + " is already added to the phonebook, replate the ole number with a new one?");
     });
   }
 
-  public void verifyDelete(boolean b) {
-    Allure.step(getCurrentMethodName(), step -> {
+  public void verifyDelete(boolean confirm) {
+    Allure.step(getCurrentMethodName(), _ -> {
+      home.deleteLastEntry();
+      handleAlert(confirm, "Do you really want to delete " + name + "?");
     });
   }
 
   public void verifyFilter(String string) {
-    Allure.step(getCurrentMethodName(), step -> {
+    Allure.step(getCurrentMethodName(), _ -> {
+      home.setFilter(string);
+      List<String> filteredPage = home.getPhonebookEntriesText()
+                        .stream().filter(p -> p.contains(string.toLowerCase())).collect(Collectors.toList());
+      List<String> filteredDb = DataClass.getEntriesFromDB()
+                        .stream().filter(p -> p.contains(string.toLowerCase())).collect(Collectors.toList());
+      Assert.assertEquals(filteredPage, filteredDb);
     });
   }
 
@@ -110,5 +112,15 @@ public class HomeValidation {
                       .getMethodName();
 
     return funcName.replaceAll("([a-z])([A-Z])", "$1 $2");
+  }
+
+  private void handleAlert(boolean confirm, String text) {
+    Alert alert = home.getAlert();
+    Assert.assertEquals(alert.getText(), text);
+    if (confirm) {
+      alert.accept();;
+    } else {
+      alert.dismiss();
+    }
   }
 }

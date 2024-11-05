@@ -6,7 +6,6 @@ import java.util.List;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.interactions.Actions;
 
 public class Home extends Base {
   private By appHeader = By.xpath("//h2[1]");
@@ -15,6 +14,8 @@ public class Home extends Base {
 	private By numberInput = By.xpath("//form/div[2]/input");
   private By addButton = By.xpath("//button[@type=\"submit\"]");
   private By successMessage = By.className("success");
+  private By allButtons = By.tagName("button");
+  private By filterInput = By.xpath("//div[1]/input");
 
   public String getAppHeader() {
     return (waitForPresence(appHeader)).getText();
@@ -48,5 +49,15 @@ public class Home extends Base {
     (find(nameInput)).sendKeys(Keys.DELETE);
     (find(numberInput)).sendKeys(Keys.CONTROL+"A");
     (find(numberInput)).sendKeys(Keys.DELETE);
+  }
+
+  public void deleteLastEntry() {
+    (findMultiple(allButtons)).getLast().click();
+  }
+
+  public void setFilter(String filter) {
+    (find(filterInput)).sendKeys(Keys.CONTROL+"A");
+    (find(filterInput)).sendKeys(Keys.DELETE);
+    (find(filterInput)).sendKeys(filter);
   }
 }
