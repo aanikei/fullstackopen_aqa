@@ -1,0 +1,171 @@
+openapi: 3.0.3
+info:
+  title: The Phonebook
+  version: 0.0.2
+servers:
+- url: http://localhost:3001/api/
+tags:
+  - name: persons
+    description: entries containing names and numbers
+paths:
+  /persons:
+    get:
+      tags:
+        - persons
+      summary: Get list of persons
+      description: Get list of all persons
+      operationId: getAll
+      responses:
+        '200':
+          description: Successful operation
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Person'
+                  
+    post:
+      tags:
+        - persons
+      summary: Create new person
+      description: Create new person
+      operationId: create
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Person'
+      responses:
+        '201':
+          description: Successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Person'
+        '400':
+          description: Name or number missing OR invalid phone number
+          content:
+            application/json:
+                schema:
+                  type: object
+                  properties:
+                    error:
+                      type: string
+                      example: The number is missing
+                
+  /persons/{id}:
+    get:
+      tags:
+        - persons
+      summary: Get a person
+      description: Get single person with given id
+      operationId: getPerson
+      parameters:
+        - name: id
+          in: path
+          description: id of person to get
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Successful operation
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Person'
+        '400':
+          description: Malformatted id
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: string
+                    default: malformatted id
+        '404':
+          description: Not found
+  
+    put:
+      tags:
+        - persons
+      summary: Update person
+      description: Update phone of person present in database
+      operationId: update
+      parameters:
+        - name: id
+          in: path
+          description: id of person to update
+          required: true
+          schema:
+            type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Person'
+      responses:
+        '200':
+          description: Successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Person'
+        '400':
+          description: Invalid phone number OR Malformatted id
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: string
+                    example: Validation failed
+                
+    delete:
+      tags:
+        - persons
+      summary: Delete person
+      description: Delete person from database
+      operationId: deleteName
+      parameters:
+        - name: id
+          in: path
+          description: id of person to delete
+          required: true
+          schema:
+            type: string
+      responses:
+        '204':
+          description: Successful operation
+        '400':
+          description: Malformatted id
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: string
+                    example: malformatted id
+                
+components:
+  schemas:
+    Person:
+      type: object
+      properties:
+        id:
+          type: string
+          default: null
+          example: abcd
+        name:
+          type: string
+          minLength: 3
+          example: Test Name
+        number:
+          type: string
+          example: 012-34567
