@@ -1,0 +1,19 @@
+{
+  "persons": [
+    {
+      "name": "Bart",
+      "number": "00-012345",
+      "id": "664fa80be321c00a9fc1a15e"
+    },
+    {
+      "name": "Homer",
+      "number": "123-56789",
+      "id": "6650cbc3ca1e455a28ea2fda"
+    },
+    {
+      "name": "Marge",
+      "number": "01-345678",
+      "id": "6650cc0eca1e455a28ea2fdc"
+    }
+  ]
+}
