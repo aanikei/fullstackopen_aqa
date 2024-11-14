@@ -1,0 +1,232 @@
+openapi: 3.0.3
+info:
+  title: blog list application
+  version: 0.0.1
+servers:
+  - url: http://localhost:3003/api/
+tags:
+  - name: blogs
+    description: blog entries
+  - name: users
+    description: users that create entries
+  - name: login
+    description: get authorization token
+paths:
+  /blogs:
+    get:
+      tags:
+        - blogs
+      summary: Get all blogs
+      description: Get list of all blogs
+      operationId: getAllBlogs
+      responses:
+        '200':
+          description: Successful operation
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Blog'
+                  
+    post:
+      tags:
+        - blogs
+      summary: Create new blog
+      description: Create new blog
+      operationId: createBlog
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Blog'
+      responses:
+        '201':
+          description: Successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Blog'
+        '400':
+          description: title or url properties are missing 
+        '401':
+          description: Unauthorized
+  
+  /blogs/{id}:
+    put:
+      tags:
+        - blogs
+      summary: Update blog
+      description: Update number of likes
+      operationId: updateBlog
+      parameters:
+        - name: id
+          in: path
+          description: id of blog to update
+          required: true
+          schema:
+            type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Blog'
+      responses:
+        '200':
+          description: Successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Blog'
+        '401':
+          description: Unauthorized
+          
+    delete:
+      tags:
+        - blogs
+      summary: Delete blog
+      description: Delete single blog
+      operationId: deleteBlog
+      parameters:
+        - name: id
+          in: path
+          description: id of blog to update
+          required: true
+          schema:
+            type: string
+      responses:
+        '204':
+          description: Successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Blog'
+        '401':
+          description: Unauthorized
+                
+  /users:
+    get:
+      tags:
+        - users
+      summary: Get all users and their blogs
+      description: Get list of all users with their blogs
+      operationId: getAllUsers
+      responses:
+        '200':
+          description: Successful operation
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/User'
+    post:
+      tags:
+        - users
+      summary: Create new user
+      description: Create new 
+      operationId: createUser
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/User'
+      responses:
+        '201':
+          description: Successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/User'
+        '400':
+          description: password must be at least 3 characters long and username unique
+          
+  /login:
+    post:
+      tags:
+        - login
+      summary: log in
+      description: Log in
+      operationId: login
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                username:
+                  type: string
+                  minLength: 3
+                  example: Test username
+                password:
+                  type: string
+                  minLength: 3
+      responses:
+        '200':
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  username:
+                    type: string
+                  name:
+                    type: string
+                  token:
+                    type: string
+                  
+        '401':
+          description: invalid username/password supplied
+                
+components:
+  schemas:
+    Blog:
+      type: object
+      properties:
+        title:
+          type: string
+          example: Test title
+        author:
+          type: string
+          example: Test author
+        url:
+          type: string
+          example: http://localhost:3003/api/
+        likes:
+          type: integer
+          example: 10
+          default: 0
+        user:
+          $ref: '#/components/schemas/User'
+        __v:
+          type: integer
+          default: null
+          example: 0
+        id:
+          type: string
+          default: null
+          example: abcd
+    User:
+      type: object
+      properties:
+        username:
+          type: string
+          minLength: 3
+          example: Test username
+        name:
+          type: string
+          example: Test name
+        id:
+          type: string
+          default: null
+          example: abcd
+        password:
+          type: string
+          minLength: 3
+          default: null
+        blogs:
+          type: array
+          default: null
+          items:
+            $ref: '#/components/schemas/Blog'
