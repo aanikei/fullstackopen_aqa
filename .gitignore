@@ -4,3 +4,4 @@ __pycache__
 target
 allure-results
 test-output
+.env
