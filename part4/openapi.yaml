@@ -28,6 +28,7 @@ paths:
                 type: array
                 items:
                   $ref: '#/components/schemas/Blog'
+                  # Could not resolve reference: NetworkError when attempting to fetch resource.
                   
     post:
       tags:
@@ -51,6 +52,8 @@ paths:
           description: title or url properties are missing 
         '401':
           description: Unauthorized
+      security:
+        - bearerAuth: []
   
   /blogs/{id}:
     put:
@@ -80,6 +83,8 @@ paths:
                 $ref: '#/components/schemas/Blog'
         '401':
           description: Unauthorized
+      security:
+        - bearerAuth: []
           
     delete:
       tags:
@@ -103,6 +108,8 @@ paths:
                 $ref: '#/components/schemas/Blog'
         '401':
           description: Unauthorized
+      security:
+        - bearerAuth: []
                 
   /users:
     get:
@@ -120,6 +127,8 @@ paths:
                 type: array
                 items:
                   $ref: '#/components/schemas/User'
+                  # Could not resolve reference: NetworkError when attempting to fetch resource.
+                  # ??? https://github.com/swagger-api/swagger-ui/issues/5726 
     post:
       tags:
         - users
@@ -206,7 +215,7 @@ components:
         id:
           type: string
           default: null
-          example: abcd
+          example: abcdefghi
     User:
       type: object
       properties:
@@ -223,10 +232,15 @@ components:
           example: abcd
         password:
           type: string
-          minLength: 3
           default: null
         blogs:
           type: array
-          default: null
+          default: []
           items:
             $ref: '#/components/schemas/Blog'
+            
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
